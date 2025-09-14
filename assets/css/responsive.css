@@ -1850,6 +1850,12 @@
     width: 55%;
   }
 
+  .login-main-container .d-background svg:first-child {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+
   .login-main-container .d-background,
   .register-main-container .d-background {
     width: 40%;
@@ -2035,6 +2041,13 @@
 
 /* Large Desktop 1440px */
 @media (min-width: 1440px) {
+  .shared-content h3 {
+    font-size: 25px;
+  }
+
+  .shared-content p {
+    font-size: 16px;
+  }
   .login-container,
   .register-container {
     width: 60%;
@@ -2052,6 +2065,23 @@
 
   .shared-section .shared-intro {
     gap: 70px;
+  }
+  .login-main-container .d-background svg:first-child {
+    width: 100% !important;
+    height: auto;
+    max-height: 100%;
+    overflow: hidden;
+    top: -15%;
+  }
+  .login-main-container .d-background svg:nth-child(2) {
+    width: 100%;
+    height: auto;
+    top: 5%;
+  }
+  .login-main-container .d-background svg:last-child {
+    width: 100%;
+    height: auto;
+    bottom: 0%;
   }
   .register-main-container .d-background svg:first-child {
     height: 400px;
