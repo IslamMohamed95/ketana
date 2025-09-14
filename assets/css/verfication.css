@@ -37,7 +37,7 @@
   display: flex;
   gap: 5px;
   justify-content: space-evenly;
-  width: 100%;
+  width: fit-content;
 }
 
 /* PIN input boxes */
