@@ -4,11 +4,24 @@
   color: black;
 }
 #verfication .form-pin-input {
+  width: 100%;
   display: none; /* hidden at first */
   width: 100%;
   text-align: center;
   flex-direction: column;
+  justify-content: center;
   gap: 16px;
+}
+#verfication .shared-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#verfication .shared-container-two {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* PIN container layout */
@@ -17,6 +30,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  width: 100%;
 }
 
 #verfication .pin-group {
