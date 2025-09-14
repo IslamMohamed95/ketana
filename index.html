@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <title>قطعنا</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section id="home">
+      <!-------- Nav Section ----->
+      <div id="nav-container">
+        <div id="account-summary">
+          <div class="login-lang-container hover" id="login-lang-container">
+            <span>Ar</span>
+            <hr />
+            <i class="fa-solid fa-angle-down hover"></i>
+          </div>
+          <div class="cart-container">
+            <i class="fa-solid fa-cart-shopping"></i><span>1</span>
+          </div>
+          <img src="./assets//images/users/admin.png" alt="userImg" />
+        </div>
+        <img
+          src="../../assets/images/logo/logo.webp"
+          alt="logoImg"
+          id="logo-index"
+        />
+        <div class="tablet-nav-el">
+          <ul>
+            <li class="hover">الرئيسية</li>
+            <hr />
+            <li class="hover">من نحن</li>
+            <hr />
+            <li class="hover">العروض</li>
+            <hr />
+            <li class="hover">متجر البيانات</li>
+          </ul>
+        </div>
+
+        <img
+          src="../../assets/images/logo/logo.webp"
+          alt="logoImg"
+          id="tablet-login-img-view"
+        />
+
+        <div id="mobile-nav-icon">
+          <div class="lang-container hover" id="tablet-lang-container">
+            <span>Ar</span>
+            <hr />
+            <i class="fa-solid fa-angle-down hover"></i>
+          </div>
+          <div class="account-action-btn hover" id="login-btn">
+            <button>سجل دخول</button>
+            <i class="fa-solid fa-caret-left"></i>
+          </div>
+          <div class="nav-icon hover">
+            <div><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+      <div id="nav-mob-container">
+        <div class="mob-close-nav-container">
+          <div class="mob-lang-container hover">
+            <span>Ar</span>
+            <hr />
+            <i class="fa-solid fa-angle-down hover"></i>
+          </div>
+          <i class="fa-solid fa-xmark hover"></i>
+        </div>
+        <hr />
+        <ul>
+          <h3>الصفحات</h3>
+          <li>
+            <span>الرئيسية</span>
+            <hr />
+          </li>
+          <hr />
+          <li>
+            <span>من نحن</span>
+            <hr />
+          </li>
+          <hr />
+          <li class="need-log">
+            <span>العروض</span>
+            <hr />
+          </li>
+          <hr />
+        </ul>
+        <ul>
+          <h3>الصفحات</h3>
+          <li class="need-log">
+            <span>ملفي الشخصي</span><i class="fa-regular fa-user"></i>
+          </li>
+          <hr />
+          <li class="need-log">
+            <span>إدراج منتج</span><i class="fa-solid fa-plus"></i>
+          </li>
+          <hr />
+          <li class="need-log">
+            <span>إدراج عرض</span><i class="fa-solid fa-folder-plus"></i>
+          </li>
+          <hr />
+        </ul>
+      </div>
+      <div id="pop-up-container">
+        <div id="pop-log-notification">
+          <div><i id="pop-close" class="fa-solid fa-xmark hover"></i></div>
+          <div>
+            <h3>يرجى تسجيل الدخول للمتابعة</h3>
+            <p>
+              قم بتسجيل الدخول أو إنشاء حساب جديد للاستفادة الكاملة من خدمات
+              المنصة.
+            </p>
+          </div>
+          <div>
+            <button id="pop-create-account">
+              <i class="fa-solid fa-user"></i> <span>إنشاء حساب</span>
+            </button>
+            <button id="pop-login">
+              <i class="fa-solid fa-person-circle-plus"></i
+              ><span>تسجيل الدخول</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!---Hero Section-->
+      <section id="hero-section">
+        <div class="hero-img-holder">
+          <div class="hero-img-effect"></div>
+        </div>
+        <div class="search-form-container">
+          <h3>دور على القطعة... وخلي التجار يخدمونك</h3>
+          <div id="search-form">
+            <div class="search-form-input">
+              <label>نوع البراند</label>
+              <div class="select-container">
+                <div class="input-value hover">
+                  <input
+                    type="text"
+                    name="brand"
+                    id="brand"
+                    aria-label="brand"
+                    placeholder="حدد البراند"
+                    readonly
+                  />
+                  <i class="fa-solid fa-chevron-down form-icon-action"></i>
+                </div>
+
+                <ul>
+                  <li>test 1</li>
+                  <li>test 2</li>
+                  <li>test 3</li>
+                  <li>test 3</li>
+                  <li>test 4</li>
+                  <li>test 5</li>
+                </ul>
+              </div>
+            </div>
+            <div class="search-form-input">
+              <label>الفئه</label>
+              <div class="select-container">
+                <div class="input-value hover">
+                  <input
+                    type="text"
+                    name="brand"
+                    id="brand"
+                    aria-label="brand"
+                    placeholder="حدد الفئه"
+                    readonly
+                  />
+                  <i class="fa-solid fa-chevron-down form-icon-action"></i>
+                </div>
+
+                <ul>
+                  <li>test 1</li>
+                  <li>test 2</li>
+                  <li>test 3</li>
+                  <li>test 3</li>
+                </ul>
+              </div>
+            </div>
+            <div class="search-form-input">
+              <label>اسم او رقم القطعة</label>
+              <div class="select-container">
+                <div class="input-value hover">
+                  <input
+                    type="text"
+                    name="brand"
+                    id="brand"
+                    aria-label="brand"
+                    placeholder="اسم او رقم القطعة"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="search-form-action">
+              <button>ابحث</button>
+              <hr />
+              <div><i class="fa-regular fa-camera"></i></div>
+            </div>
+          </div>
+          <div class="tablet-search-form">
+            <div>
+              <label>اسم او رقم القطعة</label>
+              <input
+                type="text"
+                name="brand-or-name"
+                id="brand-or-name"
+                aria-label="brand-or-name"
+                placeholder="الاسم او الرقم"
+              />
+            </div>
+            <div>
+              <button>ابحث</button>
+              <hr />
+              <div><i class="fa-regular fa-camera"></i></div>
+              <hr />
+              <div><i class="fa-solid fa-filter"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--- Services Section ----->
+      <section id="services-section">
+        <div class="services-intro">
+          <h3>ابدأ باختيار القسم المناسب لطلبك</h3>
+          <div class="services-pagination-holder">
+            <span class="hover"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="hover"><i class="fa-solid fa-chevron-left"></i></span>
+          </div>
+        </div>
+        <div class="services-brand-container">
+          <ul>
+            <li>الكل</li>
+            <li>brand 1</li>
+            <li>brand 2</li>
+            <li>brand 3</li>
+            <li>brand 4</li>
+            <li>brand 5</li>
+            <li>brand 6</li>
+            <li>brand 7</li>
+            <li>brand 8</li>
+            <li>brand 9</li>
+            <li>brand 10</li>
+            <li>brand 5</li>
+            <li>brand 6</li>
+            <li>brand 7</li>
+            <li>brand 8</li>
+            <li>brand 9</li>
+            <li>brand 10</li>
+          </ul>
+        </div>
+        <div class="service-category-container">
+          <ul>
+            <li>أصلي</li>
+            <li>تجاري</li>
+          </ul>
+        </div>
+        <div class="service-factory-container">
+          <ul>
+            <li>اليابان</li>
+            <li>ألمانيا</li>
+            <li>اليابان</li>
+            <li>ألمانيا</li>
+            <li>اليابان</li>
+            <li>ألمانيا</li>
+            <li>اليابان</li>
+            <li>ألمانيا</li>
+          </ul>
+        </div>
+
+        <div id="services-items-container"></div>
+
+        <div id="pagination-section">
+          <ul class="pagination-container">
+            <i class="fa-solid fa-chevron-left"></i>
+            <li class="hover active-page">1</li>
+            <li class="hover">2</li>
+            <li class="hover">3</li>
+            <li class="hover">...</li>
+            <li class="hover">4</li>
+            <i class="fa-solid fa-chevron-right hover"></i>
+          </ul>
+        </div>
+      </section>
+      <!-- Why Choose Us Section ---->
+      <section id="why-choose-us">
+        <h2>
+          <svg
+            width="216"
+            height="42"
+            viewBox="0 0 216 42"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.5 27C4.12054 27 144.675 19 214.5 15"
+              stroke="#FFE3DF"
+              stroke-width="30"
+            />
+          </svg>
+          لماذا تختار قطعنا؟
+        </h2>
+        <div class="block-container">
+          <div>
+            <img src="/assets/images/WhyChoosingUs/F1.svg" alt="F1" />
+            <h3>منتجات أصلية</h3>
+          </div>
+          <div>
+            <img src="/assets/images/WhyChoosingUs/F2.svg" alt="F2" />
+            <h3>أسعار تنافسية</h3>
+          </div>
+          <div>
+            <img src="/assets/images/WhyChoosingUs/F3.svg" alt="F3" />
+            <h3>دعم فني مباشر</h3>
+          </div>
+          <div>
+            <img src="/assets/images/WhyChoosingUs/F4.svg" alt="F4" />
+            <h3>فحص وتقييم المنتجات</h3>
+          </div>
+        </div>
+      </section>
+      <!---What We Offer Section---->
+      <section id="what-we-offer">
+        <div>
+          <img src="/assets/images/WhatWeOffer/mask2.svg" alt="mask2" />
+          <div>
+            <h3>طلب أسرع. توصيل أذكى</h3>
+            <p>
+              ابحث عن القطعة المناسبة خلال ثوانٍ، واطلبها بكل سهولة، مع خيارات
+              شحن مرنة ومتابعة مباشرة.
+            </p>
+            <button>
+              <span>استكشف الان</span>
+              <i class="fa-solid fa-caret-left"></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <img src="/assets/images/WhatWeOffer/mask1.svg" alt="mask1" />
+          <div>
+            <h3>طلب أسرع. توصيل أذكى</h3>
+            <p>
+              ابحث عن القطعة المناسبة خلال ثوانٍ، واطلبها بكل سهولة، مع خيارات
+              شحن مرنة ومتابعة مباشرة.
+            </p>
+            <button>
+              <span>استكشف الان</span>
+              <i class="fa-solid fa-caret-left"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!----- Spare Parts Section ------>
+      <section id="spare-parts">
+        <div class="links">
+          <h3>قطع تحتاجها</h3>
+          <a href="#">تصفح كل الاقسام</a>
+        </div>
+        <div class="spare-parts-departments">
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img1.svg" alt="img1" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img2.svg" alt="img2" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img3.svg" alt="img3" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img4.svg" alt="img4" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img5.svg" alt="img5" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+          <div class="spare-product-container">
+            <div>
+              <img src="/assets/images/SpareParts/img6.svg" alt="img6" />
+            </div>
+            <div>
+              <h3>عنوان القسم</h3>
+              <span>200 قطعة</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!---Browsing Section----->
+      <section id="browsing-section">
+        <div>
+          <img src="/assets/images/browsing/b1.svg" alt="b1" />
+          <div class="browsing-shadow-effect"></div>
+        </div>
+
+        <div>
+          <h3>كل قطعة تحتاجها... تلقاها عندنا</h3>
+          <p>
+            منصة "قطعنا" تجمع لك آلاف قطع الغيار الأصلية والتجارية من موردين
+            موثوقين، بأسعار منافسة، وخدمة طلب ذكية.
+          </p>
+          <h4>
+            <p>ابدأ التصفح</p>
+            <span class="browsing-effect"></span>
+          </h4>
+        </div>
+      </section>
+      <!--- Footer Section ---->
+      <section id="footer-section">
+        <div class="subscribe-container">
+          <div class="subscribe">
+            <h3>الاشتراك في النشرة البريدية:</h3>
+            <p>ابقَ على اطلاع بالعروض والأخبار والفعاليات الخاصة.</p>
+          </div>
+          <div class="footer-input">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="أدخل بريدك الإلكتروني"
+              aria-label="email"
+            />
+            <i class="fa-solid fa-angle-left"></i>
+          </div>
+        </div>
+        <div class="browsing-main-container">
+          <div class="socials-loc-support">
+            <img src="/assets/images/logo/logo.webp" alt="logoImg" />
+            <div class="support">
+              <p>+966 55 123 4567</p>
+              <span>الدعم متاح على مدار الساعة</span>
+            </div>
+            <div class="loc">
+              <p><span>📍</span>الرياض، طريق الملك فهد</p>
+              <span>الرياض، طريق الملك فهد</span>
+            </div>
+            <ul class="social">
+              <li><i class="bi bi-facebook"></i></li>
+              <li><i class="bi bi-twitter-x"></i></li>
+              <li><i class="bi bi-linkedin"></i></li>
+              <li><i class="bi bi-instagram"></i></li>
+            </ul>
+          </div>
+          <div>
+            <div>
+              <h3>الموارد</h3>
+              <ul>
+                <li>من نحن</li>
+                <li>المتجر</li>
+                <li>السلة</li>
+                <li>العلامات التجارية</li>
+              </ul>
+            </div>
+            <div>
+              <h3>معلومات المتجر</h3>
+              <ul>
+                <li>الأكثر مبيعًا</li>
+                <li>المنتجات الأعلى طلبًا</li>
+                <li>أحدث الإضافات</li>
+                <li>عروض مؤقتة</li>
+                <li>قطع بأسعار مخفضة</li>
+              </ul>
+            </div>
+            <div>
+              <h3>الدعم</h3>
+              <ul>
+                <li>التقييمات</li>
+                <li>تواصل معنا</li>
+                <li>الدعم الفني</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>
