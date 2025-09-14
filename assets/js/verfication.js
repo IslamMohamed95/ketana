@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
       startTimer(60);
     }, 0);
-    if (window.location.href !== "/verfication.html") {
+    if (!window.location.pathname.endsWith("verfication.html")) {
       return;
     } else {
       sessionStorage.removeItem("animatePin");
