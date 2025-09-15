@@ -698,6 +698,7 @@
     width: 80%;
     margin-top: 30px;
     display: flex;
+    justify-content: space-between;
     flex-direction: column; /* allow stacking multiple products */
     align-items: center;
     gap: 15px;
@@ -1135,7 +1136,7 @@
   #spare-parts .spare-parts-departments > div > div:first-child {
     width: 50%;
     height: 50%;
-    padding: 20%;
+    padding: 10%;
     background-color: rgba(247, 247, 247, 1);
     border-radius: 50%;
   }
