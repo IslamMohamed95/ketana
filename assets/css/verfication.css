@@ -1,5 +1,8 @@
 /* ---------- VERIFICATION PAGE PIN STYLES ---------- */
 #verfication #send-btn {
+  width: 100%;
+}
+#verfication #send-btn {
   background-color: var(--submit-btn-color);
   color: black;
 }
