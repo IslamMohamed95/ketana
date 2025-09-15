@@ -695,6 +695,7 @@
   }
   /*----------- Product Styles----------*/
   #services-items-container {
+    width: 80%;
     margin-top: 30px;
     display: flex;
     flex-direction: column; /* allow stacking multiple products */
@@ -703,10 +704,10 @@
   }
 
   #services-items-container .product {
-    padding: 5%;
+    padding: 6%;
     border-radius: 20px;
     border: 2px solid rgba(220, 220, 220, 1);
-    width: 80%;
+    width: 100%;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -1710,6 +1711,7 @@
   }
   /*---------- Prodcut Section Styles --------*/
   #services-items-container {
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
