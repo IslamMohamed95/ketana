@@ -3,7 +3,7 @@ const formPinInput = document.querySelector(".form-pin-input"),
   separator = document.querySelector(".separator"),
   pinError = document.getElementById("pin-error"),
   resendTimer = document.getElementById("resend-timer"),
-  timerNumber = resendTimer.querySelector(".timer-number"),
+  timerNumber = resendTimer?.querySelector(".timer-number"),
   send_btn = document.getElementById("send-btn"),
   edit_num = document.getElementById("link-action-effect");
 
@@ -11,6 +11,8 @@ let timerInterval;
 
 /* ✅ Start countdown */
 function startTimer(duration) {
+  if (!timerNumber) return;
+
   let remaining = duration;
   timerNumber.innerText = remaining;
 
@@ -26,49 +28,44 @@ function startTimer(duration) {
 }
 
 /* ✅ Run animation on page load if coming from login */
-document.addEventListener("DOMContentLoaded", (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
   if (sessionStorage.getItem("animatePin") === "true") {
     setTimeout(() => {
       formPinInput.style.display = "flex"; // show PIN form
       separator.classList.add("show");
 
       pinInputs.forEach((input, index) => {
-        setTimeout(() => {
-          input.classList.add("show");
-        }, (index + 1) * 200);
+        setTimeout(() => input.classList.add("show"), (index + 1) * 200);
       });
 
       startTimer(60);
     }, 0);
-    if (!window.location.pathname.endsWith("verfication.html")) {
-      return;
-    } else {
+
+    if (window.location.pathname.endsWith("verfication.html")) {
       sessionStorage.removeItem("animatePin");
     }
   }
 });
 
-window.addEventListener("pageshow", function (event) {
+/* ✅ Handle page restore from cache */
+window.addEventListener("pageshow", (event) => {
   if (event.persisted) {
-    console.log("test");
     sessionStorage.removeItem("animatePin");
-  } else {
-    return;
   }
 });
 
-edit_num.addEventListener("click", (e) => {
+/* ✅ Edit number link */
+edit_num?.addEventListener("click", (e) => {
   e.preventDefault();
-  if (sessionStorage.getItem("loc")) {
-    window.location.href = `/${sessionStorage.getItem("loc")}.html`;
+  const loc = sessionStorage.getItem("loc");
+  if (loc) {
+    window.location.href = `/${loc}.html`;
+    sessionStorage.removeItem("loc");
   }
-
-  sessionStorage.removeItem("loc");
 });
 
 /* ✅ Validate PIN on send */
-send_btn.addEventListener("click", (e) => {
+send_btn?.addEventListener("click", (e) => {
   e.preventDefault();
 
   const loader = document.getElementById("loader");
@@ -77,7 +74,6 @@ send_btn.addEventListener("click", (e) => {
   const enteredPin = Array.from(pinInputs)
     .map((i) => i.value)
     .join("");
-
   let hasEmpty = false;
 
   // Check for empty fields
@@ -102,7 +98,7 @@ send_btn.addEventListener("click", (e) => {
   send_btn.classList.add("loading");
 
   setTimeout(() => {
-    const locPage = sessionStorage.getItem("loc"); // get page location from sessionStorage
+    const locPage = sessionStorage.getItem("loc");
 
     if (enteredPin !== "123456") {
       // Wrong PIN
@@ -120,21 +116,18 @@ send_btn.addEventListener("click", (e) => {
         el.style.backgroundColor = "rgba(48,109,254,0.1)";
       });
 
-      // Set logged-in status in localStorage
       localStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("PIN_status", "true");
 
-      // Navigate depending on loc variable
       if (locPage === "login") {
         window.location.href = "index.html";
       } else if (locPage === "register") {
         window.location.href = "register.html";
       }
-
-      sessionStorage.setItem("PIN_status", true);
       return;
     }
 
-    // Restore button state after wrong PIN
+    // Restore button state
     loader.style.display = "none";
     btnText.style.display = "flex";
     send_btn.disabled = false;
@@ -144,13 +137,17 @@ send_btn.addEventListener("click", (e) => {
 
 /* ✅ Handle PIN input behavior */
 pinInputs.forEach((input, index) => {
+  // Force single digit
   input.addEventListener("input", () => {
-    if (input.value.trim() !== "") {
-      // Filled → blue border + light blue bg
+    input.value = input.value.replace(/\D/g, ""); // only numbers
+    if (input.value.length > 1) {
+      input.value = input.value.charAt(0);
+    }
+
+    if (input.value) {
       input.style.borderColor = "rgba(48,109,254,1)";
       input.style.backgroundColor = "rgba(48,109,254,0.1)";
     } else {
-      // Empty → reset default
       input.style.borderColor = "#ccc";
       input.style.backgroundColor = "var(--form-inp-color)";
     }
