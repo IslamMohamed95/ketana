@@ -43,6 +43,10 @@
   width: 90%;
 }
 
+.pin-group .pin-input + .pin-input {
+  margin-left: 8px; /* iOS Safari fallback */
+}
+
 #verfication .pin-group {
   display: flex;
   gap: 5px;
