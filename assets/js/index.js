@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const minusIcon = addProduct.querySelector(".fa-minus");
     const input = addProduct.querySelector("input");
 
-    addProduct.addEventListener("click", () => {
+    plusIcon.addEventListener("click", () => {
       if (addProduct.classList.contains("collapsed")) {
         addProduct.classList.remove("collapsed");
         addProduct.classList.add("expanded");
