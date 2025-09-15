@@ -49,7 +49,6 @@
   border: 2px solid #ccc;
   background-color: var(--form-inp-color);
 
-  transform: translateY(30px);
   outline: none;
 }
 
