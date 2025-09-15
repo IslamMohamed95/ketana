@@ -5,14 +5,13 @@
 }
 #verfication .form-pin-input {
   width: 100%;
-  display: flex; /* hidden at first */
+  display: none; /* hidden at first */
   width: 100%;
   text-align: center;
   flex-direction: column;
   justify-content: center;
   gap: 16px;
 }
-
 #verfication .shared-container {
   display: flex;
   flex-direction: column;
@@ -48,15 +47,17 @@
   border-radius: 8px;
   border: 2px solid #ccc;
   background-color: var(--form-inp-color);
-
+  opacity: 0; /* hidden initially */
+  transform: translateY(30px); /* shifted down */
   outline: none;
+  transition: all 0.3s ease;
 }
 
 /* Filled box effect */
 #verfication .pin-input.filled {
   background-color: var(--PIN-box-color);
   border-color: transparent;
-  transform: scale(1.05);
+  transform: scale(1.05); /* small pop */
 }
 
 /* Reset scale if not filled */
@@ -68,6 +69,7 @@
 #verfication .separator {
   font-size: 15px;
   font-weight: bold;
+  opacity: 0;
 }
 
 /* PIN input animation */
