@@ -1,30 +1,36 @@
 /* ---------- VERIFICATION PAGE PIN STYLES ---------- */
-#verfication #send-btn {
-  width: 100%;
+#verfication {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 #verfication #send-btn {
   background-color: var(--submit-btn-color);
   color: black;
 }
 #verfication .form-pin-input {
-  width: 100%;
   display: none; /* hidden at first */
-  width: 100%;
-  text-align: center;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 15px;
 }
 #verfication .shared-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 #verfication .shared-container-two {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 /* PIN container layout */
