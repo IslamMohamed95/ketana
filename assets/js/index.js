@@ -233,6 +233,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Some element toggle
     if (someElement) someElement.style.display = isLoggedIn ? "none" : "flex";
+
+    // ✅ Hide last 2 li + <hr> before them in tablet nav if not logged in
+    const tabletLis = document.querySelectorAll(".tablet-nav-el ul li");
+    if (tabletLis.length > 2) {
+      tabletLis.forEach((li, idx) => {
+        const hr = li.previousElementSibling;
+        if (!isLoggedIn && idx >= tabletLis.length - 2) {
+          li.style.display = "none";
+          if (hr && hr.tagName.toLowerCase() === "hr") {
+            hr.style.display = "none";
+          }
+        } else {
+          li.style.display = "";
+          if (hr && hr.tagName.toLowerCase() === "hr") {
+            hr.style.display = "";
+          }
+        }
+      });
+    }
   }
 
   // Initial check
@@ -568,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const minusIcon = addProduct.querySelector(".fa-minus");
     const input = addProduct.querySelector("input");
 
-    plusIcon.addEventListener("click", () => {
+    addProduct.addEventListener("click", () => {
       if (addProduct.classList.contains("collapsed")) {
         addProduct.classList.remove("collapsed");
         addProduct.classList.add("expanded");
