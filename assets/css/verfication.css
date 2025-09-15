@@ -36,16 +36,19 @@
 /* PIN container layout */
 #verfication .pin-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
   width: 100%;
+  overflow: hidden;
 }
 
 #verfication .pin-group {
   display: flex;
   gap: 5px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  align-items: center;
   width: fit-content;
 }
 
