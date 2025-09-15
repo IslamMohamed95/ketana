@@ -1,4 +1,5 @@
 /* Base: Mobile first (320px) */
+
 @media (min-width: 320px) {
   :root {
     --text-title-size: 18px;
@@ -23,7 +24,7 @@
   }
 
   #verfication .form-pin-input .pin-input {
-    width: 100%;
+    width: 30px;
     height: 50px;
   }
 
