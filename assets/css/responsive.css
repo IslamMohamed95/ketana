@@ -1530,6 +1530,7 @@
   #verfication .shared-container {
     width: 50%;
   }
+
   /*-------------- Nav Styles ---------*/
   #home #nav-container {
     justify-content: space-between;
@@ -1884,6 +1885,10 @@
 
   #verfication .shared-container {
     width: 40%;
+  }
+  #verfication .form-pin-input .pin-input {
+    width: 50px;
+    height: 60px;
   }
   /*-------------- Nav Styles ---------*/
   #home #nav-container {
