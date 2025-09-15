@@ -1,22 +1,21 @@
-const submit_btn = document.getElementById("submit-btn"),
-  formMobInput = document.querySelector(".form-mob-input");
+// Cache DOM references once
+const submitBtn = document.getElementById("submit-btn");
+const formMobInput = document.querySelector(".form-mob-input");
+const logoSection = document.querySelector(".logo-section");
+const footer = document.getElementById("support-footer");
 
 /* Insert Logo Component */
-function insertLogo() {
-  const logo = document.createElement("img");
-  logo.src = "./assets/images/logo/logo.webp"; // your logo path
-  logo.alt = "logoImg";
-
-  const container = document.querySelector(".logo-section");
-  if (container) container.appendChild(logo);
-}
-insertLogo();
+(function insertLogo() {
+  if (!logoSection) return;
+  logoSection.insertAdjacentHTML(
+    "beforeend",
+    `<img src="./assets/images/logo/logo.webp" alt="logoImg" />`
+  );
+})();
 
 /* Support Footer */
-function supportFooter() {
-  const footer = document.getElementById("support-footer");
+(function supportFooter() {
   if (!footer) return;
-
   footer.innerHTML = `
     <div><button>EN</button></div>
     <div>
@@ -30,66 +29,19 @@ function supportFooter() {
       <p class="contact">تواصل معنا</p>
     </div>
   `;
-}
-supportFooter();
+})();
 
 /* Page Location Check for Submit Button */
-function checkPageLocation() {
-  if (!submit_btn) return; // safeguard
+(function checkPageLocation() {
+  if (!submitBtn) return;
 
   const currentPage = window.location.pathname.split("/").pop();
   if (currentPage === "verfication.html") return;
 
-  submit_btn.addEventListener("click", (e) => {
+  submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    sessionStorage.setItem("loc", submit_btn.getAttribute("data-name"));
+    sessionStorage.setItem("loc", submitBtn.dataset.name || "");
     sessionStorage.setItem("animatePin", "true");
     window.location.href = "/verfication.html";
   });
-}
-checkPageLocation();
-
-function login() {}
-
-// /* Insert the Nav */
-// function addNav() {
-//   const navContainer = document.getElementById("nav-container");
-//   if (!navContainer) {
-//     console.error("nav-container not found");
-//     return;
-//   }
-
-//   const mainDiv = document.createElement("div");
-
-//   // First child div with spans
-//   const firstChildDiv = document.createElement("div");
-//   const innerDiv = document.createElement("div");
-//   const span1 = document.createElement("span");
-//   const span2 = document.createElement("span");
-//   innerDiv.appendChild(span1);
-//   innerDiv.appendChild(span2);
-//   firstChildDiv.appendChild(innerDiv);
-
-//   // Second child div with icon and button
-//   const secondChildDiv = document.createElement("div");
-//   const icon = document.createElement("i");
-//   icon.className = "fa-solid fa-caret-left";
-//   const button = document.createElement("button");
-//   button.textContent = "سجل دخول";
-//   secondChildDiv.appendChild(icon);
-//   secondChildDiv.appendChild(button);
-
-//   mainDiv.appendChild(firstChildDiv);
-//   mainDiv.appendChild(secondChildDiv);
-
-//   // Logo image for nav
-//   const img = document.createElement("img");
-//   img.src = "./assets/images/logo/logo.webp"; // adjusted path
-//   img.alt = "logoImg";
-
-//   navContainer.appendChild(mainDiv);
-//   navContainer.appendChild(img);
-// }
-
-// // Direct call
-// addNav();
+})();

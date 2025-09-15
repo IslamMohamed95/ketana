@@ -1,5 +1,4 @@
 /* Base: Mobile first (320px) */
-
 @media (min-width: 320px) {
   :root {
     --text-title-size: 18px;

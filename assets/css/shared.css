@@ -1,86 +1,79 @@
 .shared-section {
   display: flex;
-  padding: 100px 0 0 0;
   flex: 1;
-
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  padding: 100px 0 0 0;
 }
 
 #support-footer {
-  width: 100%;
   display: flex;
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 #support-footer > div {
-  padding: 20px 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: fit-content;
+  padding: 20px 30px;
   font-size: 12px !important;
 }
 #support-footer div svg {
   margin: 0 5px;
   font-weight: bold !important;
 }
-#support-footer div .contact {
-  color: black !important;
-}
 #support-footer div .contact,
 #support-footer div button {
   font-weight: bold;
 }
+#support-footer div .contact {
+  color: black !important;
+}
 #support-footer div button {
   width: 40px;
   height: 40px;
-  border: none;
   padding: 10px;
+  border: none;
   border-radius: 10px;
   background-color: var(--language-color);
 }
 
 .shared-container {
   display: flex;
-  width: 90%;
   flex-direction: column;
   gap: 32px;
+  width: 90%;
 }
-.shared-intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 16px;
-}
+
+.shared-intro,
 .shared-section .shared-intro > div:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
 
-.shared-content h3 {
-  text-align: center;
-  font-weight: var(--text-title-weight);
-  font-size: var(--text-title-size);
-  color: var(--text-title-color);
-  font-family: var(--font-semibold);
-}
-.shared-content p {
-  text-align: center;
-  line-height: var(--text-content-line-height);
-  font-size: var(--text-content-size);
-  color: var(--text-content-color);
-}
 .shared-content h3,
 .shared-content p {
   margin: 0;
+  text-align: center;
+}
+.shared-content h3 {
+  font-family: var(--font-semibold);
+  font-size: var(--text-title-size);
+  font-weight: var(--text-title-weight);
+  color: var(--text-title-color);
+}
+.shared-content p {
+  font-size: var(--text-content-size);
+  line-height: var(--text-content-line-height);
+  color: var(--text-content-color);
 }
 
 .shared-action-container {
@@ -95,28 +88,28 @@
   align-items: center;
   width: 100%;
   padding: 14px 10px;
-  border-radius: 12px;
-  border: 2px solid var(--form-btn-bg-color);
-  background-color: var(--form-btn-bg-color);
-  color: var(--form-btn-text-color);
   border: none;
+  border-radius: 12px;
   font-family: var(--font-regular);
   font-size: var(--form-login-action-size);
+  color: var(--form-btn-text-color);
+  background-color: var(--form-btn-bg-color);
   transition: background-color 0.5s ease;
 }
 .shared-action-btn.loading {
   background-color: red !important; /* active loader color */
 }
+
 .shared-href {
   margin-top: 30px;
   text-align: center;
 }
 .shared-href a {
-  font-style: none;
-  color: var(--form-label-color);
-  font-size: var(--form-reg-action-size);
-  text-decoration: none;
   align-self: center;
+  font-size: var(--form-reg-action-size);
+  color: var(--form-label-color);
+  text-decoration: none;
+  font-style: none;
 }
 
 .shared-form-mob-input > div {
@@ -124,11 +117,7 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 20px;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* added */
-}
-.shared-form-mob-input > div {
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 .shared-form-mob-input label {
   font-size: var(--form-label-size);
@@ -138,14 +127,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px;
-  height: 40px;
-  padding: 0px 10px;
   background-color: var(--form-inp-color);
 }
-
 .shared-form-mob-input hr {
   width: 1px;
   height: 27px;
