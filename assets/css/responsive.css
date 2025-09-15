@@ -879,11 +879,64 @@
     max-width: 120px;
     opacity: 1;
     pointer-events: auto;
-    background-color: rgba(235, 235, 235, 1);
+
     color: black;
   }
   #services-items-container .action-input.active i {
     color: black;
+  }
+  /* Collapsed (default) */
+  #services-items-container .add-product {
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    background-color: rgba(168, 20, 0, 1);
+    transition: width 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+  }
+
+  #services-items-container .add-product i {
+    font-size: 16px;
+    color: inherit;
+    transition: opacity 0.3s ease;
+  }
+
+  #services-items-container .add-product input {
+    display: none;
+    width: 20%;
+    height: 36px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    margin: 0 8px;
+    background-color: transparent;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Expanded state */
+  #services-items-container .add-product.expanded {
+    width: 100px;
+    color: black;
+    background-color: rgba(235, 235, 235, 1);
+  }
+
+  #services-items-container .add-product.expanded input {
+    display: block;
+  }
+
+  #services-items-container .add-product.expanded .fa-minus {
+    display: block;
+  }
+
+  /* Default hide minus */
+  #services-items-container .add-product .fa-minus {
+    display: none;
   }
 
   /* Hide collapsed + button */

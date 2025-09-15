@@ -525,34 +525,67 @@ document.addEventListener("DOMContentLoaded", () => {
     const productDiv = document.createElement("div");
     productDiv.className = "product";
     productDiv.innerHTML = `
-      <div class="product-details-container">
-        <div class="product-details">
-          <img src="${product.img}" alt="p-Img">
-          <div class="details">
-            <h4>${product.detail}</h4>
-            <span>${product.number}</span>
-          </div>
-        </div>
-        <div class="category-type">
-          ${product.offer ? `<p class="offer">عرض</p>` : ""}
-          <p class="category-name">${product.category}</p>
+    <div class="product-details-container">
+      <div class="product-details">
+        <img src="${product.img}" alt="p-Img">
+        <div class="details">
+          <h4>${product.detail}</h4>
+          <span>${product.number}</span>
         </div>
       </div>
-      <div class="product-evaluation">
-        <div class="factory">
-          <img src="${product.factoryImg}" alt="factory-img">
-          <p>ياباني</p>
-        </div>
-        <div class="eval">
-          <span>${product.evaluation}</span>
-          ${renderStars(product.evaluation)}
-        </div>
+      <div class="category-type">
+        ${product.offer ? `<p class="offer">عرض</p>` : ""}
+        <p class="category-name">${product.category}</p>
       </div>
-    `;
+    </div>
+    <div class="product-evaluation">
+      <div class="factory">
+        <img src="${product.factoryImg}" alt="factory-img">
+        <p>ياباني</p>
+      </div>
+      <div class="eval">
+        <span>${product.evaluation}</span>
+        ${renderStars(product.evaluation)}
+      </div>
+    </div>
+
+    <!-- Quantity Selector -->
+    <div class="add-product collapsed">
+      <i class="fa-solid fa-plus"></i>
+      <input type="number" value="1" min="1" />
+      <i class="fa-solid fa-minus"></i>
+    </div>
+  `;
+
     const catEl = productDiv.querySelector(".category-name");
     catEl.style.background =
       product.category === "اصلي" ? "rgba(0, 53, 179, 1)" : "red";
     catEl.style.color = "#fff";
+
+    // ✅ Expand/Collapse Quantity Selector
+    const addProduct = productDiv.querySelector(".add-product");
+    const plusIcon = addProduct.querySelector(".fa-plus");
+    const minusIcon = addProduct.querySelector(".fa-minus");
+    const input = addProduct.querySelector("input");
+
+    plusIcon.addEventListener("click", () => {
+      if (addProduct.classList.contains("collapsed")) {
+        addProduct.classList.remove("collapsed");
+        addProduct.classList.add("expanded");
+      } else {
+        input.value = parseInt(input.value) + 1;
+      }
+    });
+
+    minusIcon.addEventListener("click", () => {
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      } else {
+        addProduct.classList.remove("expanded");
+        addProduct.classList.add("collapsed");
+      }
+    });
+
     return productDiv;
   }
 
