@@ -40,8 +40,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  width: 100%;
-  overflow: hidden;
+  width: 90%;
 }
 
 #verfication .pin-group {
@@ -51,7 +50,9 @@
   align-items: center;
   width: fit-content;
 }
-
+#verfication .shared-action-container {
+  width: 90% !important;
+}
 /* PIN input boxes */
 #verfication .pin-group .pin-input {
   font-size: 20px;
