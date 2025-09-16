@@ -17,104 +17,7 @@
   </head>
   <body>
     <section id="home">
-      <!-------- Nav Section ----->
-      <div id="nav-container">
-        <div id="account-summary">
-          <div class="login-lang-container hover" id="login-lang-container">
-            <span>Ar</span>
-            <hr />
-            <i class="fa-solid fa-angle-down hover"></i>
-          </div>
-          <div class="cart-holder">
-            <div class="cart-container">
-              <i class="fa-solid fa-cart-shopping"></i><span>1</span>
-            </div>
-
-            <img src="./assets//images/users/admin.png" alt="userImg" />
-          </div>
-        </div>
-        <img
-          src="../../assets/images/logo/logo.webp"
-          alt="logoImg"
-          id="logo-index"
-        />
-        <div class="tablet-nav-el">
-          <ul>
-            <li class="hover need-log">الرئيسية</li>
-            <hr />
-            <li class="hover need-log">من نحن</li>
-            <hr />
-            <li class="hover need-log">العروض</li>
-            <hr />
-            <li class="hover need-log">متجر البيانات</li>
-          </ul>
-        </div>
-
-        <img
-          src="../../assets/images/logo/logo.webp"
-          alt="logoImg"
-          id="tablet-login-img-view"
-        />
-
-        <div id="mobile-nav-icon">
-          <div class="lang-container hover" id="tablet-lang-container">
-            <span>Ar</span>
-            <hr />
-            <i class="fa-solid fa-angle-down hover"></i>
-          </div>
-          <div class="account-action-btn hover" id="login-btn">
-            <button>سجل دخول</button>
-            <i class="fa-solid fa-caret-left"></i>
-          </div>
-          <div class="nav-icon hover">
-            <div><span></span><span></span></div>
-          </div>
-        </div>
-      </div>
-      <div id="nav-mob-container">
-        <div class="mob-close-nav-container">
-          <div class="mob-lang-container hover">
-            <span>Ar</span>
-            <hr />
-            <i class="fa-solid fa-angle-down hover"></i>
-          </div>
-          <i class="fa-solid fa-xmark hover"></i>
-        </div>
-        <hr />
-        <ul>
-          <h3>الصفحات</h3>
-          <li>
-            <span>الرئيسية</span>
-            <hr />
-          </li>
-          <hr />
-          <li>
-            <span>من نحن</span>
-            <hr />
-          </li>
-          <hr />
-          <li class="need-log">
-            <span>العروض</span>
-            <hr />
-          </li>
-          <hr />
-        </ul>
-        <ul>
-          <h3>الصفحات</h3>
-          <li class="need-log">
-            <span>ملفي الشخصي</span><i class="fa-regular fa-user"></i>
-          </li>
-          <hr />
-          <li class="need-log">
-            <span>إدراج منتج</span><i class="fa-solid fa-plus"></i>
-          </li>
-          <hr />
-          <li class="need-log">
-            <span>إدراج عرض</span><i class="fa-solid fa-folder-plus"></i>
-          </li>
-          <hr />
-        </ul>
-      </div>
+      <div id="shared-nav"></div>
       <div id="pop-up-container">
         <div id="pop-log-notification">
           <div><i id="pop-close" class="fa-solid fa-xmark hover"></i></div>
@@ -448,74 +351,8 @@
         </div>
       </section>
       <!--- Footer Section ---->
-      <section id="footer-section">
-        <div class="subscribe-container">
-          <div class="subscribe">
-            <h3>الاشتراك في النشرة البريدية:</h3>
-            <p>ابقَ على اطلاع بالعروض والأخبار والفعاليات الخاصة.</p>
-          </div>
-          <div class="footer-input">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="أدخل بريدك الإلكتروني"
-              aria-label="email"
-            />
-            <i class="fa-solid fa-angle-left"></i>
-          </div>
-        </div>
-        <div class="browsing-main-container">
-          <div class="socials-loc-support">
-            <img src="/assets/images/logo/logo.webp" alt="logoImg" />
-            <div class="support">
-              <p>+966 55 123 4567</p>
-              <span>الدعم متاح على مدار الساعة</span>
-            </div>
-            <div class="loc">
-              <p><span>📍</span>الرياض، طريق الملك فهد</p>
-              <span>الرياض، طريق الملك فهد</span>
-            </div>
-            <ul class="social">
-              <li><i class="bi bi-facebook"></i></li>
-              <li><i class="bi bi-twitter-x"></i></li>
-              <li><i class="bi bi-linkedin"></i></li>
-              <li><i class="bi bi-instagram"></i></li>
-            </ul>
-          </div>
-          <div>
-            <div>
-              <h3>الموارد</h3>
-              <ul>
-                <li>من نحن</li>
-                <li>المتجر</li>
-                <li>السلة</li>
-                <li>العلامات التجارية</li>
-              </ul>
-            </div>
-            <div>
-              <h3>معلومات المتجر</h3>
-              <ul>
-                <li>الأكثر مبيعًا</li>
-                <li>المنتجات الأعلى طلبًا</li>
-                <li>أحدث الإضافات</li>
-                <li>عروض مؤقتة</li>
-                <li>قطع بأسعار مخفضة</li>
-              </ul>
-            </div>
-            <div>
-              <h3>الدعم</h3>
-              <ul>
-                <li>التقييمات</li>
-                <li>تواصل معنا</li>
-                <li>الدعم الفني</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section id="footer-section"></section>
     </section>
-
     <script src="./assets/js/common.js"></script>
     <script src="./assets/js/index.js"></script>
   </body>
