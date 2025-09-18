@@ -15,22 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobNavContainer = document.getElementById("nav-mob-container");
   const loginBtn = document.getElementById("login-btn");
 
-  // Nav / header
-  const navContainer = document.getElementById("nav-container");
-  const mobileNavIcon = document.getElementById("mobile-nav-icon");
-  const tabletLangContainer = document.getElementById("tablet-lang-container");
-  const accountSummary = document.getElementById("account-summary");
-  const logoIndex = document.getElementById("logo-index");
-  const tabletLoginImgView = document.getElementById("tablet-login-img-view");
-  const someElement = document.getElementById("some-element");
-
   // Search select controls
   const selectContainers = document.querySelectorAll(".select-container");
-
-  // Services / pagination
-  const servicesBrandContainer = document.querySelector(
-    "#services-section .services-brand-container"
-  );
 
   // Products
   const productContainer = document.getElementById("services-items-container");
@@ -98,69 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     popContainer.addEventListener("click", (e) => {
       if (e.target === popContainer) hidePop();
     });
-
-  // --- Header / Login status adjustments ---
-  function checkLoginStatus() {
-    const logged = isLoggedIn();
-    const screenWidth = window.innerWidth;
-
-    // Login button & nav adjustments
-    if (loginBtn) loginBtn.style.display = logged ? "none" : "block";
-
-    if (navContainer) {
-      if (logged) {
-        navContainer.style.display = "flex";
-        navContainer.style.flexDirection = "row-reverse";
-        navContainer.style.justifyContent = "space-between";
-      } else {
-        navContainer.style.display = ""; // reset
-        navContainer.style.flexDirection = "";
-        navContainer.style.justifyContent = "";
-      }
-    }
-
-    // Mobile nav icon logic (preserve original width settings)
-    if (mobileNavIcon) {
-      if (screenWidth < 768) {
-        mobileNavIcon.style.display = "flex";
-        mobileNavIcon.style.width = "auto";
-      } else {
-        mobileNavIcon.style.display = logged ? "none" : "flex";
-        mobileNavIcon.style.width = "auto";
-      }
-    }
-
-    // Tablet language container
-    if (tabletLangContainer) {
-      tabletLangContainer.style.display =
-        logged && screenWidth >= 768 ? "none" : "";
-    }
-
-    if (accountSummary) accountSummary.style.display = logged ? "flex" : "none";
-    if (tabletLoginImgView)
-      tabletLoginImgView.style.display = logged ? "block" : "none";
-    if (logoIndex) logoIndex.style.display = logged ? "none" : "block";
-    if (someElement) someElement.style.display = logged ? "none" : "flex";
-
-    // Hide last 2 li + preceding <hr> in tablet nav if not logged in (preserve original guard)
-    const tabletLis = document.querySelectorAll(".tablet-nav-el ul li");
-    if (tabletLis.length > 2) {
-      tabletLis.forEach((li, idx) => {
-        const hr = li.previousElementSibling;
-        if (!logged && idx >= tabletLis.length - 2) {
-          li.style.display = "none";
-          if (hr && hr.tagName.toLowerCase() === "hr")
-            hr.style.display = "none";
-        } else {
-          li.style.display = "";
-          if (hr && hr.tagName.toLowerCase() === "hr") hr.style.display = "";
-        }
-      });
-    }
-  }
-
-  // run once initially
-  checkLoginStatus();
 
   // debounce resize updates using rAF (keeps original behaviour but reduces calls)
   let rafResize = null;
@@ -244,137 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
     closeAllSelects();
   });
 
-  // --- Services pagination (brand list) ---
-  if (servicesBrandContainer) {
-    const ul = servicesBrandContainer.querySelector("ul");
-    if (ul) {
-      const items = Array.from(ul.querySelectorAll("li"));
-      if (items.length) {
-        const categoryContainer = document.querySelector(
-          ".service-category-container"
-        );
-        const factoryContainer = document.querySelector(
-          ".service-factory-container"
-        );
-
-        const arrowSpans = Array.from(
-          document.querySelectorAll(
-            "#services-section .services-pagination-holder span"
-          )
-        );
-        let arrowRight = null;
-        let arrowLeft = null;
-
-        arrowSpans.forEach((span) => {
-          const icon = span.querySelector("i");
-          if (!icon) return;
-          if (icon.classList.contains("fa-chevron-left")) arrowRight = span;
-          if (icon.classList.contains("fa-chevron-right")) arrowLeft = span;
-        });
-
-        if (!arrowRight && arrowSpans[0]) arrowRight = arrowSpans[0];
-        if (!arrowLeft && arrowSpans[1]) arrowLeft = arrowSpans[1];
-
-        let activeIndex = 0;
-
-        function normalizeIndex(idx) {
-          return ((idx % items.length) + items.length) % items.length;
-        }
-
-        function resetCategoryAndFactory() {
-          if (categoryContainer) {
-            categoryContainer.classList.remove("show");
-            categoryContainer
-              .querySelectorAll("li")
-              .forEach((c) => c.classList.remove("active"));
-          }
-          if (factoryContainer) {
-            factoryContainer.classList.remove("show");
-            factoryContainer
-              .querySelectorAll("li")
-              .forEach((f) => f.classList.remove("active"));
-          }
-        }
-
-        function setActive(index) {
-          index = normalizeIndex(index);
-          items.forEach((li, i) => li.classList.toggle("active", i === index));
-          activeIndex = index;
-
-          const activeItem = items[activeIndex];
-          // center the active li inside the scroll container (original smooth behaviour)
-          const containerRect = servicesBrandContainer.getBoundingClientRect();
-          const itemRect = activeItem.getBoundingClientRect();
-          const offset =
-            itemRect.left -
-            containerRect.left -
-            (containerRect.width / 2 - itemRect.width / 2);
-
-          servicesBrandContainer.scrollBy({ left: offset, behavior: "smooth" });
-
-          if (activeItem.textContent.trim() !== "الكل") {
-            if (categoryContainer) categoryContainer.classList.add("show");
-          } else {
-            resetCategoryAndFactory();
-          }
-        }
-
-        // default
-        setActive(0);
-
-        // arrows
-        if (arrowRight) {
-          arrowRight.addEventListener("click", (e) => {
-            e.preventDefault();
-            setActive(activeIndex + 1);
-          });
-        }
-
-        if (arrowLeft) {
-          arrowLeft.addEventListener("click", (e) => {
-            e.preventDefault();
-            setActive(activeIndex - 1);
-          });
-        }
-
-        // clicking brand items
-        items.forEach((li, i) =>
-          li.addEventListener("click", () => setActive(i))
-        );
-
-        // category -> factory
-        if (categoryContainer) {
-          const catItems = categoryContainer.querySelectorAll("li");
-          catItems.forEach((li) => {
-            li.addEventListener("click", () => {
-              catItems.forEach((c) => c.classList.remove("active"));
-              li.classList.add("active");
-              if (factoryContainer) factoryContainer.classList.add("show");
-            });
-          });
-        }
-
-        // factory click
-        if (factoryContainer) {
-          const factItems = factoryContainer.querySelectorAll("li");
-          factItems.forEach((li) => {
-            li.addEventListener("click", () => {
-              factItems.forEach((f) => f.classList.remove("active"));
-              li.classList.add("active");
-            });
-          });
-        }
-
-        // keyboard support
-        ul.setAttribute("tabindex", "0");
-        ul.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") setActive(activeIndex + 1);
-          if (e.key === "ArrowLeft") setActive(activeIndex - 1);
-        });
-      }
-    }
-  }
-
   // --- Products rendering & pagination ---
   if (productContainer && paginationContainer) {
     const SAMPLE_IMG = "./assets/images/products/product.png";
@@ -418,6 +210,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderProduct(product) {
       const productDiv = document.createElement("div");
       productDiv.className = "product";
+
+      // ✅ Handle price
+      let price = product.price;
+      if (price === undefined || price === null || price === "") {
+        // generate random price between 50–500
+        price = Math.floor(Math.random() * (500 - 50 + 1)) + 50;
+      }
+
       productDiv.innerHTML = `
     <div class="product-details-container">
       <div class="product-details">
@@ -443,14 +243,28 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
 
-    <!-- Quantity Selector -->
-    <div class="add-product collapsed">
-      <i class="fa-solid fa-plus"></i>
-      <input type="number" value="1" min="1" />
-      <i class="fa-solid fa-minus"></i>
+    <!-- ✅ Quantity & Price Row -->
+    <div class="quantity-price-container">
+      <!-- Quantity Selector -->
+      <div class="add-product collapsed">
+        <i class="fa-solid fa-plus"></i>
+        <input type="number" value="1" min="1" />
+        <i class="fa-solid fa-minus"></i>
+      </div>
+
+      <!-- Price -->
+      ${
+        price
+          ? `<div class="price">
+               <span>${price}</span>
+               <img src="./assets/images/products/currency.svg" alt="SAR" class="currency-icon" />
+             </div>`
+          : ""
+      }
     </div>
   `;
 
+      // Style category badge
       const catEl = productDiv.querySelector(".category-name");
       if (catEl) {
         catEl.style.background =
@@ -458,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
         catEl.style.color = "#fff";
       }
 
+      // Quantity selector logic
       const addProduct = productDiv.querySelector(".add-product");
       const plusIcon = addProduct.querySelector(".fa-plus");
       const minusIcon = addProduct.querySelector(".fa-minus");
@@ -489,9 +304,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const perPage = getProductsPerPage();
       const start = (page - 1) * perPage;
       const end = start + perPage;
-      allProducts
-        .slice(start, end)
-        .forEach((p) => productContainer.appendChild(renderProduct(p)));
+
+      const productsToShow = allProducts.slice(start, end);
+      productsToShow.forEach((p) =>
+        productContainer.appendChild(renderProduct(p))
+      );
+
+      // ✅ Update results counter
+      const resultsDiv = document.getElementById("show-pages-number");
+      if (resultsDiv) {
+        const total = allProducts.length;
+        const from = start + 1;
+        const to = Math.min(end, total);
+
+        resultsDiv.textContent = `عرض ${to} من ${total} النتائج`;
+      }
     }
 
     function renderPagination() {
