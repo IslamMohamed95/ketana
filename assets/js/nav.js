@@ -51,12 +51,13 @@ function initNavEvents() {
   }
 
   /* --------- Breadcrumb Logic --------- */
-  function updateBreadcrumb(pageName) {
+  function updateBreadcrumb(pageName, productName = null) {
     const holder = document.getElementById("nav-details");
     if (!holder) return;
 
     holder.innerHTML = "";
 
+    // Home link
     const homeLink = document.createElement("a");
     homeLink.textContent = "الرئيسية";
     homeLink.href = "index.html";
@@ -64,6 +65,7 @@ function initNavEvents() {
     homeLink.style.textDecoration = "none";
     holder.appendChild(homeLink);
 
+    // Page name
     if (pageName !== "الرئيسية") {
       const slash = document.createElement("span");
       slash.textContent = " / ";
@@ -72,8 +74,24 @@ function initNavEvents() {
 
       const current = document.createElement("span");
       current.textContent = pageName;
-      current.style.color = "rgba(239, 85, 93, 1)";
+      // ✅ Make gray if there's a productName (so it's not last)
+      current.style.color = productName
+        ? "rgba(185, 185, 185, 1)"
+        : "rgba(239, 85, 93, 1)";
       holder.appendChild(current);
+    }
+
+    // Product name (if provided → always last → red)
+    if (productName) {
+      const slash = document.createElement("span");
+      slash.textContent = " / ";
+      slash.style.color = "rgba(185, 185, 185, 1)";
+      holder.appendChild(slash);
+
+      const productSpan = document.createElement("span");
+      productSpan.textContent = productName;
+      productSpan.style.color = "rgba(239, 85, 93, 1)"; // always last → red
+      holder.appendChild(productSpan);
     }
   }
   window.updateBreadcrumb = updateBreadcrumb;
