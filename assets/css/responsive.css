@@ -2434,10 +2434,115 @@
   #offer-section #services-items-container > div {
     width: 90%;
   }
+  /*--------- Databse Section Styles ----------*/
+  #database-section {
+    width: 100%;
+  }
+  #database-section .content-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  #database-section .content-container .intro {
+    position: relative;
+    padding: 0 0 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../images/database/database.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+  }
+  #database-section .content-container .shadow-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(168, 20, 0, 0.2),
+      rgba(28, 22, 22, 0.7)
+    );
+    z-index: 0;
+  }
+  #database-section .intro > div {
+    z-index: 5;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  #database-section .intro > div span {
+    color: white;
+    border-radius: 100px;
+    padding: 6px 10px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  #database-section .intro > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  #database-section .intro > div > div h3,
+  #database-section .intro > div > div p {
+    margin: 0;
+  }
+  #database-section .intro > div > div h3 {
+    color: white;
+  }
+  #database-section .intro > div > div p {
+    font-size: 12px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  #database-section .search-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  #database-section .search-container h3 {
+    margin: 0;
+  }
+  #database-section .search-container > div {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 12px;
+    border-radius: 14px;
+    border: 6px solid rgba(209, 209, 209, 0.2);
+  }
+  #database-section .search-container > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #database-section .search-container > div > div label {
+    font-size: 13px;
+  }
+  #database-section .search-container > div > div input {
+    font-size: 13px;
+    border: none;
+  }
+  #database-section .search-container > div button {
+    border-radius: 14px;
+    padding: 10px 30px;
+    border: none;
+    color: white;
+    background-color: rgba(60, 7, 0, 1);
+  }
   /*------- Footer Section Styles -------*/
   #footer-section {
     position: relative;
-
     background-color: rgba(25, 25, 25, 1);
     width: 100%;
     display: flex;
@@ -2445,7 +2550,7 @@
     justify-content: center;
     align-items: center;
     color: white;
-    padding: 10% 2%;
+    padding: 10% 0%;
     gap: 15px;
     overflow: hidden;
   }
@@ -3674,9 +3779,6 @@
   }
 
   /*--------- Hero Section Styles ---------*/
-  #hero-section {
-    height: 1200px;
-  }
 
   /*---------- Services Section Styles -----------*/
   #services-section .services-pagination-holder span i {
