@@ -72,12 +72,25 @@ function initNavEvents() {
       slash.style.color = "rgba(185, 185, 185, 1)";
       holder.appendChild(slash);
 
-      const current = document.createElement("span");
-      current.textContent = pageName;
-      current.style.color = productName
-        ? "rgba(185, 185, 185, 1)"
-        : "rgba(239, 85, 93, 1)";
-      holder.appendChild(current);
+      if (pageName === "المنتجات") {
+        // ✅ Make "المنتجات" clickable
+        const productsLink = document.createElement("a");
+        productsLink.textContent = "المنتجات";
+        productsLink.href = "products.html";
+        productsLink.style.color = productName
+          ? "rgba(185, 185, 185, 1)"
+          : "rgba(239, 85, 93, 1)";
+        productsLink.style.textDecoration = "none";
+        holder.appendChild(productsLink);
+      } else {
+        // default non-clickable page name
+        const current = document.createElement("span");
+        current.textContent = pageName;
+        current.style.color = productName
+          ? "rgba(185, 185, 185, 1)"
+          : "rgba(239, 85, 93, 1)";
+        holder.appendChild(current);
+      }
     }
 
     // Product name (if provided → always last → red)
