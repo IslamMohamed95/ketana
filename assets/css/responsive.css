@@ -3154,7 +3154,7 @@
   }
   #about .img-part {
     width: 95%;
-    height: 100%;
+    height: 300px;
     clip-path: polygon(0 0, 100% 0%, 86% 100%, 0% 100%);
   }
   #about .who-we-are {
@@ -3517,6 +3517,9 @@
   /*----------- About Section ------------*/
   #about .what-we-offer .list-holder {
     padding: 1px;
+  }
+  #about .img-part {
+    height: 400px;
   }
   /*-------- Product View Section Styles ---------*/
   #product-view-section .product-details-view-container {

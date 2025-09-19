@@ -9,18 +9,9 @@ function initNavEvents() {
     const navList = sharedNav.querySelector("#nav-container ul");
     if (!navList) return;
 
-    let liCount = 0;
+    // ✅ Always show all li and hr (ignore login status for navigation items)
     Array.from(navList.children).forEach((el) => {
-      if (isLoggedIn) {
-        el.style.display = "";
-        return;
-      }
-      if (el.tagName.toLowerCase() === "li") {
-        liCount++;
-        el.style.display = liCount <= 2 ? "" : "none";
-      } else if (el.tagName.toLowerCase() === "hr") {
-        el.style.display = liCount === 1 ? "" : "none";
-      }
+      el.style.display = "";
     });
   }
 
@@ -73,7 +64,6 @@ function initNavEvents() {
       holder.appendChild(slash);
 
       if (pageName === "المنتجات") {
-        // ✅ Make "المنتجات" clickable
         const productsLink = document.createElement("a");
         productsLink.textContent = "المنتجات";
         productsLink.href = "products.html";
@@ -83,7 +73,6 @@ function initNavEvents() {
         productsLink.style.textDecoration = "none";
         holder.appendChild(productsLink);
       } else {
-        // default non-clickable page name
         const current = document.createElement("span");
         current.textContent = pageName;
         current.style.color = productName
@@ -93,7 +82,6 @@ function initNavEvents() {
       }
     }
 
-    // Product name (if provided → always last → red)
     if (productName) {
       const slash = document.createElement("span");
       slash.textContent = " / ";
@@ -173,7 +161,7 @@ function initNavEvents() {
       loginBtnLocal.style.display = isLoggedIn ? "none" : "block";
 
     if (navContainer) {
-      navContainer.style.display = isLoggedIn ? "flex" : "";
+      navContainer.style.display = "flex";
       navContainer.style.flexDirection = isLoggedIn ? "row-reverse" : "";
     }
 
@@ -188,7 +176,6 @@ function initNavEvents() {
       logoIndex.style.zIndex = isLoggedIn ? "1" : "9999";
     }
 
-    // --- Mobile nav icon logic ---
     if (mobileNavIcon) {
       const screenWidth = window.innerWidth;
       if (isLoggedIn && screenWidth >= 768) {
@@ -220,7 +207,6 @@ function initNavEvents() {
     function activateNav(pageName) {
       clearAllActive();
 
-      // Tablet
       tabletLis.forEach((li) => {
         if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active", "tablet-active");
@@ -228,7 +214,6 @@ function initNavEvents() {
         }
       });
 
-      // Mobile
       mobLis.forEach((li) => {
         if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active");
@@ -241,7 +226,7 @@ function initNavEvents() {
     }
 
     function handleClick(li, pageName) {
-      localStorage.setItem("activePage", pageName); // ✅ save clicked page
+      localStorage.setItem("activePage", pageName);
       activateNav(pageName);
 
       if (pageName.includes("الرئيسية")) window.location.href = "index.html";
@@ -267,7 +252,6 @@ function initNavEvents() {
       });
     });
 
-    // ✅ Restore active page from localStorage (or default to الرئيسية)
     const savedPage = localStorage.getItem("activePage") || "الرئيسية";
     activateNav(savedPage);
   }
@@ -275,7 +259,6 @@ function initNavEvents() {
   checkLoginStatus();
   window.addEventListener("resize", checkLoginStatus);
 
-  // finalize nav visibility based on login
   updateNavByLoginStatus();
 }
 

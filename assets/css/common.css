@@ -43,7 +43,6 @@
 
 html,
 body {
-  height: 100%;
   flex-direction: column;
   direction: rtl;
   overflow-x: hidden;
