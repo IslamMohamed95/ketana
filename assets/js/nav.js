@@ -74,7 +74,6 @@ function initNavEvents() {
 
       const current = document.createElement("span");
       current.textContent = pageName;
-      // ✅ Make gray if there's a productName (so it's not last)
       current.style.color = productName
         ? "rgba(185, 185, 185, 1)"
         : "rgba(239, 85, 93, 1)";
@@ -90,7 +89,7 @@ function initNavEvents() {
 
       const productSpan = document.createElement("span");
       productSpan.textContent = productName;
-      productSpan.style.color = "rgba(239, 85, 93, 1)"; // always last → red
+      productSpan.style.color = "rgba(239, 85, 93, 1)";
       holder.appendChild(productSpan);
     }
   }
@@ -189,74 +188,75 @@ function initNavEvents() {
 
     /* Tablet nav */
     const tabletLis = sharedNav.querySelectorAll(".tablet-nav-el ul li");
-    if (tabletLis.length > 0) {
+    /* Mobile nav */
+    const mobLis = mobNavContainer?.querySelectorAll("ul li") || [];
+
+    function clearAllActive() {
       tabletLis.forEach((li) => {
         li.classList.remove("active", "tablet-active");
         li.style.color = "";
         li.textContent = li.textContent.replace(/^- /, "");
-        li.addEventListener("click", () => {
-          tabletLis.forEach((inner) => {
-            inner.classList.remove("active", "tablet-active");
-            inner.style.color = "";
-            inner.textContent = inner.textContent.replace(/^- /, "");
-          });
-          li.classList.add("active", "tablet-active");
-          li.style.color = "red";
-
-          const pageName = li.textContent.trim();
-          updateBreadcrumb(pageName);
-
-          if (pageName.includes("الرئيسية"))
-            window.location.href = "index.html";
-          if (pageName.includes("من نحن")) window.location.href = "about.html";
-          if (pageName.includes("المنتجات"))
-            window.location.href = "products.html";
-          if (pageName.includes("العروض")) window.location.href = "offer.html"; // ✅ Added
-          if (pageName.includes("تواصل معنا"))
-            window.location.href = "contact.html";
-        });
       });
-      tabletLis[0].classList.add("active", "tablet-active");
-      tabletLis[0].style.color = "red";
-    }
-
-    /* Mobile nav */
-    const mobLis = mobNavContainer?.querySelectorAll("ul li") || [];
-    if (mobLis.length > 0) {
       mobLis.forEach((li) => {
         li.classList.remove("active");
         li.style.color = "";
         li.textContent = li.textContent.replace(/^- /, "");
+      });
+    }
 
-        li.addEventListener("click", () => {
-          mobLis.forEach((inner) => {
-            inner.classList.remove("active");
-            inner.style.color = "";
-            inner.textContent = inner.textContent.replace(/^- /, "");
-          });
+    function activateNav(pageName) {
+      clearAllActive();
+
+      // Tablet
+      tabletLis.forEach((li) => {
+        if (li.textContent.trim().includes(pageName)) {
+          li.classList.add("active", "tablet-active");
+          li.style.color = "red";
+        }
+      });
+
+      // Mobile
+      mobLis.forEach((li) => {
+        if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active");
           li.style.color = "red";
-          li.textContent = `- ${li.textContent}`;
-
-          const pageName = li.textContent.trim().replace(/^- /, "");
-          updateBreadcrumb(pageName);
-
-          if (pageName.includes("الرئيسية"))
-            window.location.href = "index.html";
-          if (pageName.includes("من نحن")) window.location.href = "about.html";
-          if (pageName.includes("المنتجات"))
-            window.location.href = "products.html";
-          if (pageName.includes("العروض")) window.location.href = "offer.html"; // ✅ Added
-          if (pageName.includes("تواصل معنا"))
-            window.location.href = "contact.html";
-
-          hideMobileNav();
-        });
+          li.textContent = `- ${li.textContent.replace(/^- /, "")}`;
+        }
       });
-      mobLis[0].classList.add("active");
-      mobLis[0].style.color = "red";
-      mobLis[0].textContent = `- ${mobLis[0].textContent}`;
+
+      updateBreadcrumb(pageName);
     }
+
+    function handleClick(li, pageName) {
+      localStorage.setItem("activePage", pageName); // ✅ save clicked page
+      activateNav(pageName);
+
+      if (pageName.includes("الرئيسية")) window.location.href = "index.html";
+      if (pageName.includes("من نحن")) window.location.href = "about.html";
+      if (pageName.includes("المنتجات")) window.location.href = "products.html";
+      if (pageName.includes("العروض")) window.location.href = "offer.html";
+      if (pageName.includes("تواصل معنا"))
+        window.location.href = "contact.html";
+    }
+
+    tabletLis.forEach((li) => {
+      li.addEventListener("click", () => {
+        const pageName = li.textContent.trim().replace(/^- /, "");
+        handleClick(li, pageName);
+      });
+    });
+
+    mobLis.forEach((li) => {
+      li.addEventListener("click", () => {
+        const pageName = li.textContent.trim().replace(/^- /, "");
+        handleClick(li, pageName);
+        hideMobileNav();
+      });
+    });
+
+    // ✅ Restore active page from localStorage (or default to الرئيسية)
+    const savedPage = localStorage.getItem("activePage") || "الرئيسية";
+    activateNav(savedPage);
   }
 
   checkLoginStatus();
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "products.html": "المنتجات",
           "about.html": "من نحن",
           "contact.html": "تواصل معنا",
-          "offer.html": "العروض", // ✅ Added
+          "offer.html": "العروض",
         };
         if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
           window.updateBreadcrumb(map[currentPage]);

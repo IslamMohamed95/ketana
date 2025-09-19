@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchForm.style.flexDirection = "column";
       searchForm.style.gap = "15px";
 
-      searchFormAction.style.width = "90%";
+      searchFormAction.style.width = "100%";
       if (searchSubcontainer) {
         searchSubcontainer.style.display = "flex";
         searchSubcontainer.style.alignItems = "flex-start";
