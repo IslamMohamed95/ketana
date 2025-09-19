@@ -1,4 +1,5 @@
-import { getProducts, renderProduct } from "./product.js";
+import { renderProduct } from "./product.js";
+import { getProducts } from "./productData.js";
 import { paginate } from "./pagination.js";
 
 document.addEventListener("DOMContentLoaded", () => {

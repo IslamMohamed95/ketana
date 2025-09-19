@@ -211,6 +211,7 @@ function initNavEvents() {
           if (pageName.includes("من نحن")) window.location.href = "about.html";
           if (pageName.includes("المنتجات"))
             window.location.href = "products.html";
+          if (pageName.includes("العروض")) window.location.href = "offer.html"; // ✅ Added
           if (pageName.includes("تواصل معنا"))
             window.location.href = "contact.html";
         });
@@ -245,6 +246,7 @@ function initNavEvents() {
           if (pageName.includes("من نحن")) window.location.href = "about.html";
           if (pageName.includes("المنتجات"))
             window.location.href = "products.html";
+          if (pageName.includes("العروض")) window.location.href = "offer.html"; // ✅ Added
           if (pageName.includes("تواصل معنا"))
             window.location.href = "contact.html";
 
@@ -288,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
           "products.html": "المنتجات",
           "about.html": "من نحن",
           "contact.html": "تواصل معنا",
+          "offer.html": "العروض", // ✅ Added
         };
         if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
           window.updateBreadcrumb(map[currentPage]);

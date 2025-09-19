@@ -1,38 +1,18 @@
 // products.js
-export function getProducts(count = 40) {
-  const SAMPLE_IMG = "./assets/images/products/product.png";
-  const FACTORY_IMG = "./assets/images/products/factory.png";
-
-  function randomNumber() {
-    const randPart = () => Math.floor(10000 + Math.random() * 90000);
-    return `${randPart()}-${randPart()}`;
-  }
-
-  function createProductObj() {
-    const categories = ["اصلي", "تجاري"];
-    const category = categories[Math.floor(Math.random() * categories.length)];
-    return {
-      img: SAMPLE_IMG,
-      detail: `تفاصيل المنتج ${Math.floor(Math.random() * 100)}`,
-      number: randomNumber(),
-      offer: Math.random() > 0.5,
-      category,
-      factoryImg: FACTORY_IMG,
-      evaluation: (Math.random() * 5).toFixed(1),
-      price: Math.floor(Math.random() * (500 - 50 + 1)) + 50,
-    };
-  }
-
-  const products = [];
-  for (let i = 0; i < count; i++) products.push(createProductObj());
-  return products;
-}
 
 export function renderProduct(product) {
   const productDiv = document.createElement("div");
   productDiv.className = "product";
 
   productDiv.innerHTML = `
+    <div class="layout-offer">
+      <div class="category-type">
+        ${product.offer ? `<p class="offer">عرض</p>` : ""}
+        <p class="category-name">${product.category}</p>
+      </div>
+      <div>متبقي 01:2:24</div>
+    </div>
+
     <div class="product-details-container">
       <div class="product-details">
         <img src="${product.img}" alt="p-Img">
@@ -41,7 +21,7 @@ export function renderProduct(product) {
           <span>${product.number}</span>
         </div>
       </div>
-      <div class="category-type">
+      <div class="category-type category-secondary">
         ${product.offer ? `<p class="offer">عرض</p>` : ""}
         <p class="category-name">${product.category}</p>
       </div>
@@ -52,7 +32,7 @@ export function renderProduct(product) {
         <p>ياباني</p>
       </div>
       <div class="eval">
-  <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
         <span class="eval-number">${product.evaluation}</span>
       </div>
     </div>
@@ -69,7 +49,27 @@ export function renderProduct(product) {
     </div>
   `;
 
-  // Product click → go to product view
+  // ===== Page-specific logic =====
+  const isOfferPage = window.location.pathname.includes("offer.html");
+
+  const layoutOffer = productDiv.querySelector(".layout-offer");
+
+  const quantityPrice = productDiv.querySelector(".quantity-price-container");
+  const secondaryCategory = productDiv.querySelector(".category-secondary");
+
+  if (isOfferPage) {
+    layoutOffer.style.display = "flex";
+
+    quantityPrice.style.display = "none";
+    secondaryCategory.style.display = "none"; // hide the 2nd category
+  } else {
+    layoutOffer.style.display = "none";
+
+    quantityPrice.style.display = "flex";
+    secondaryCategory.style.display = "flex"; // show the 2nd category
+  }
+
+  // ===== Product click → go to product view =====
   const h4 = productDiv.querySelector(".details h4");
   if (h4) {
     h4.addEventListener("click", () => {
@@ -80,22 +80,24 @@ export function renderProduct(product) {
     });
   }
 
-  // Expand / collapse logic
+  // ===== Expand / collapse logic =====
   const addProduct = productDiv.querySelector(".add-product");
-  const plusIcon = addProduct.querySelector(".fa-plus");
-  const minusIcon = addProduct.querySelector(".fa-minus");
-  const inputField = addProduct.querySelector("input");
+  if (addProduct) {
+    const plusIcon = addProduct.querySelector(".fa-plus");
+    const minusIcon = addProduct.querySelector(".fa-minus");
+    const inputField = addProduct.querySelector("input");
 
-  plusIcon.addEventListener("click", () => {
-    addProduct.classList.add("expanded");
-    inputField.focus();
-  });
+    plusIcon.addEventListener("click", () => {
+      addProduct.classList.add("expanded");
+      inputField.focus();
+    });
 
-  minusIcon.addEventListener("click", () => {
-    addProduct.classList.remove("expanded");
-  });
+    minusIcon.addEventListener("click", () => {
+      addProduct.classList.remove("expanded");
+    });
+  }
 
-  // ⭐ Fill the Font Awesome star using linear gradient
+  // ===== Star rating gradient =====
   const starIcon = productDiv.querySelector(".eval .fa-star");
   if (starIcon) {
     const rating = parseFloat(product.evaluation);
