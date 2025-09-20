@@ -29,7 +29,7 @@
                 <label>ملفي الشخصي</label>
               </li>
               <hr />
-              <li class="profile-settings hover">
+              <li class="hover">
                 <i class="fa-solid fa-plus"></i>
                 <label>منتجاتي</label>
               </li>
@@ -52,8 +52,8 @@
             <div id="profile-data" class="secondary-nav">
               <ul class="profile-op">
                 <li class="basic-info hover">البيانات الأساسية</li>
-                <li class="hover">إعدادات الحساب</li>
-                <li class="hover">إدارة المفوضين</li>
+                <li class="profile-sett hover">إعدادات الحساب</li>
+                <li class="manage-dealer hover">إدارة المفوضين</li>
                 <li class="hover">بيانات الحساب البنكي</li>
               </ul>
             </div>
@@ -129,6 +129,225 @@
                   <label>تعديل البيانات</label>
                 </button>
               </div>
+            </div>
+
+            <div class="profile-sett">
+              <h3>إعدادات الحساب وتفضيلات الاستخدام</h3>
+              <div class="profile-form-details">
+                <div class="field">
+                  <label>كلمة المرور الجديدة</label>
+                  <div>
+                    <img
+                      src="./assets/images/profile/passwordIcon.svg"
+                      alt="img"
+                    />
+                    <input
+                      type="password"
+                      aria-label="email"
+                      placeholder="كلمة المرور الجديدة"
+                    />
+                    <i class="fa-solid fa-eye"></i>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>تاكيد كلمة المرور الجديدة</label>
+                  <div>
+                    <img src="./assets/images/profile/confirmIcon.svg" alt="" />
+                    <input
+                      type="password"
+                      aria-label="text"
+                      placeholder="تاكيد كلمة المرور الجديدة"
+                    />
+                    <i class="fa-solid fa-eye-slash"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-action">
+                <button class="green-btn">
+                  <img src="./assets/images/profile/green img.svg" alt="img" />
+                  <label>تغيير كلمة المرور</label>
+                </button>
+              </div>
+
+              <div class="address-holder">
+                <div>
+                  <span>تلقائي</span>
+                  <div>
+                    <i class="fa-solid fa-pen"></i>
+                    <span>تعديل</span>
+                  </div>
+                </div>
+                <div>
+                  <label>الاسم:</label>
+                  <p>Ahmed Magdy</p>
+                </div>
+                <div>
+                  <label>العنوان:</label>
+                  <p class="truncate">
+                    3232, 8103 - الهاشمي - حي الملك سلمان - الرياض - امارة منطقة
+                    الرياض - منطقة الرياض - 12443, الرياض, المملكة العربية
+                    السعودية
+                  </p>
+                </div>
+              </div>
+              <div class="add-address hover">
+                <i class="fa-solid fa-square-plus"></i>
+                <span>اضف عنوان جديد</span>
+              </div>
+              <hr class="address-splitter" />
+              <div class="preferred-lang-user-type">
+                <div class="preferred-lang">
+                  <h4>اللغة المفضلة</h4>
+                  <div>
+                    <span>Ar</span>
+                    <hr />
+                    <i class="fa-solid fa-angle-down"></i>
+                  </div>
+                </div>
+
+                <div class="user-type">
+                  <h4>نوع المستخدم</h4>
+                  <p>مستخدم رئيسي / مفوض</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="manage-dealer">
+              <div class="dealer-intro">
+                <h3>المفوضون المسجلون</h3>
+                <button class="green-btn">
+                  <img src="./assets/images/profile/dealer.svg" alt="img" />
+                  <label>إضافة مفوض جديد</label>
+                </button>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>خيارات</th>
+                      <th>آخر دخول</th>
+                      <th>حالة الحساب</th>
+                      <th>رقم الجوال</th>
+                      <th>البريد الإلكتروني</th>
+                      <th>الاسم</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="options">
+                          <button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </button>
+                          <ul class="dropdown">
+                            <li>
+                              <i class="fa-solid fa-pen"></i> تعديل بيانات
+                              المفوض
+                            </li>
+                            <li>
+                              <i class="fa-solid fa-rotate-left"></i> إعادة
+                              تعيين كلمة المرور
+                            </li>
+                            <li class="delete">
+                              <i class="fa-solid fa-trash"></i> حذف المفوض
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td>2025/07/28 - 11:30ص</td>
+                      <td><span class="status-active">مفعل</span></td>
+                      <td>+966 55 888 4444</td>
+                      <td>abdullah@email.com</td>
+                      <td>عبدالله الشمري</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="options">
+                          <button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </button>
+                          <ul class="dropdown">
+                            <li>
+                              <i class="fa-solid fa-pen"></i> تعديل بيانات
+                              المفوض
+                            </li>
+                            <li>
+                              <i class="fa-solid fa-rotate-left"></i> إعادة
+                              تعيين كلمة المرور
+                            </li>
+                            <li class="delete">
+                              <i class="fa-solid fa-trash"></i> حذف المفوض
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td>2025/07/28 - 11:30ص</td>
+                      <td><span class="status-inactive">غير مفعل</span></td>
+                      <td>+966 55 888 4444</td>
+                      <td>abdullah@email.com</td>
+                      <td>عبدالله الشمري</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="options">
+                          <button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </button>
+                          <ul class="dropdown">
+                            <li>
+                              <i class="fa-solid fa-pen"></i> تعديل بيانات
+                              المفوض
+                            </li>
+                            <li>
+                              <i class="fa-solid fa-rotate-left"></i> إعادة
+                              تعيين كلمة المرور
+                            </li>
+                            <li class="delete">
+                              <i class="fa-solid fa-trash"></i> حذف المفوض
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td>2025/07/28 - 11:30ص</td>
+                      <td><span class="status-inactive">غير مفعل</span></td>
+                      <td>+966 55 888 4444</td>
+                      <td>abdullah@email.com</td>
+                      <td>عبدالله الشمري</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="options">
+                          <button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </button>
+                          <ul class="dropdown">
+                            <li>
+                              <i class="fa-solid fa-pen"></i> تعديل بيانات
+                              المفوض
+                            </li>
+                            <li>
+                              <i class="fa-solid fa-rotate-left"></i> إعادة
+                              تعيين كلمة المرور
+                            </li>
+                            <li class="delete">
+                              <i class="fa-solid fa-trash"></i> حذف المفوض
+                            </li>
+                          </ul>
+                        </div>
+                      </td>
+                      <td>2025/07/28 - 11:30ص</td>
+                      <td><span class="status-inactive">غير مفعل</span></td>
+                      <td>+966 55 888 4444</td>
+                      <td>abdullah@email.com</td>
+                      <td>عبدالله الشمري</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!--- Pagination Dynamic Rendering ----->
+              <div id="pagination-section"></div>
             </div>
           </div>
         </div>

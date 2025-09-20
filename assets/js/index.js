@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!container) return;
 
-  // Generate products and paginate
+  // Products + pagination
   const products = getProducts(40);
   paginate(products, 8, renderProduct, container, paginationWrapper);
 
-  // Optional: wait for nav to load if you want to highlight breadcrumbs
+  // Optional: breadcrumb update
   const waitNav = setInterval(() => {
     if (typeof window.updateBreadcrumb === "function") {
       window.updateBreadcrumb("المنتجات");
