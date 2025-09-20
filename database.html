@@ -34,65 +34,109 @@
           </div>
         </div>
         <div class="search-container">
-          <h3>ابحث عن قطع الغيار حسب اسم الشركة المصنعة</h3>
           <div>
+            <h3>ابحث عن قطع الغيار حسب اسم الشركة المصنعة</h3>
             <div>
-              <label>اسم او رقم القطعة</label>
-              <input
-                type="text"
-                name="search"
-                id="search"
-                aria-label="search"
-                placeholder="الاسم او الرقم"
-              />
+              <div>
+                <label>اسم او رقم القطعة</label>
+                <input
+                  type="text"
+                  name="search"
+                  id="search"
+                  aria-label="search"
+                  placeholder="الاسم او الرقم"
+                />
+              </div>
+              <button>ابحث</button>
             </div>
-            <button>ابحث</button>
           </div>
         </div>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>اسم القطعة</th>
-                <th>رقم القطعة</th>
-                <th>أرقام بديلة</th>
-                <th>نوع البراند</th>
-                <th>الفئة</th>
-                <th>بلد الصنع</th>
-                <th>شركة الصنع</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>فلتر زيت</td>
-                <td>90915-YZZF2</td>
-                <td>90915-YZZF2</td>
-                <td>Toyota</td>
-                <td>أصلي</td>
-                <td>-----</td>
-                <td>-----</td>
-              </tr>
-              <tr>
-                <td>فلتر زيت</td>
-                <td>90915-YZZF2</td>
-                <td>90915-YZZF2</td>
-                <td>Toyota</td>
-                <td>تجاري</td>
-                <td>اليابان</td>
-                <td>ياباني</td>
-              </tr>
-              <tr>
-                <td>فلتر زيت</td>
-                <td>90915-YZZF2</td>
-                <td>90915-YZZF2</td>
-                <td>Toyota</td>
-                <td>تجاري</td>
-                <td>اليابان</td>
-                <td>ياباني</td>
-              </tr>
-              <!-- يمكنك تكرار المزيد من الصفوف مثل المثال -->
-            </tbody>
-          </table>
+        <div class="table">
+          <button class="hover">
+            <span>تحميل البيانات كملف Excel</span
+            ><i class="fa-solid fa-arrow-down"></i>
+          </button>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <div class="th-flex">
+                      <span>اسم القطعة</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>رقم القطعة</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>أرقام بديلة</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>نوع البراند</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>الفئة</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>بلد الصنع</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-flex">
+                      <span>شركة الصنع</span>
+                      <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>فلتر زيت</td>
+                  <td>90915-YZZF2</td>
+                  <td>90915-YZZF2</td>
+                  <td>Toyota</td>
+                  <td>أصلي</td>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+                <tr>
+                  <td>فلتر زيت</td>
+                  <td>90915-YZZF2</td>
+                  <td>90915-YZZF2</td>
+                  <td>Toyota</td>
+                  <td>تجاري</td>
+                  <td>اليابان</td>
+                  <td>ياباني</td>
+                </tr>
+                <tr>
+                  <td>فلتر زيت</td>
+                  <td>90915-YZZF2</td>
+                  <td>90915-YZZF2</td>
+                  <td>Toyota</td>
+                  <td>تجاري</td>
+                  <td>اليابان</td>
+                  <td>ياباني</td>
+                </tr>
+                <!-- يمكنك تكرار المزيد من الصفوف مثل المثال -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
