@@ -3347,6 +3347,217 @@
   #order-section .tablet-form-address {
     display: none;
   }
+  /*------- Profile Section Styles -------*/
+  /*Primary Nav*/
+  #profile-section .profile-content {
+    display: flex;
+    flex-direction: column;
+  }
+  #profile-section ul,
+  #profile-section p,
+  #profile-section h3 {
+    margin: 0;
+    padding: 0;
+  }
+  #profile-section .primary-nav,
+  #profile-section .secondary-nav {
+    overflow-x: scroll;
+  }
+  #profile-section .primary-nav {
+    padding: 10px;
+  }
+  #profile-section .primary-nav,
+  #profile-section .secondary-nav {
+    border-bottom: 1px solid rgba(235, 235, 235, 1);
+    background-color: rgba(252, 252, 252, 1);
+  }
+  #profile-section .primary-nav ul hr {
+    display: none;
+  }
+  #profile-section .primary-nav ul,
+  #profile-section .primary-nav ul li,
+  #profile-section .secondary-nav ul,
+  #profile-section .secondary-nav li {
+    display: flex;
+    align-items: center;
+  }
+  #profile-section .primary-nav ul,
+  #profile-section .secondary-nav ul {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  #profile-section .primary-nav ul li {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+  }
+  #profile-section .primary-nav ul li {
+    transition: all 0.3s ease-in-out;
+  }
+  #profile-section .primary-nav ul li,
+  #profile-section .secondary-nav ul li {
+    justify-content: center;
+    font-size: 12px;
+    gap: 5px;
+  }
+  #profile-section .primary-nav ul li i {
+    color: rgba(239, 85, 93, 1);
+  }
+  #profile-section .primary-nav ul li.activePrimaryNav {
+    color: white;
+    background-color: rgba(239, 85, 93, 1);
+  }
+  #profile-section .primary-nav ul li i.activePrimaryNavIcon {
+    color: white;
+  }
+
+  #profile-section .primary-nav ul li label,
+  #profile-section .secondary-nav ul li {
+    white-space: nowrap;
+  }
+  /*Secondary Nav*/
+  #profile-section .second-part {
+    display: flex;
+    flex-direction: column;
+  }
+  #profile-section .secondary-nav ul li {
+    padding: 18px 10px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  #profile-section .secondary-nav ul li.activeSecondaryNav {
+    color: rgba(239, 85, 93, 1);
+    background-color: rgba(255, 248, 248, 1);
+    border-bottom: 3px solid rgba(230, 44, 54, 1);
+  }
+  #profile-section .details-nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #profile-section .details-nav-container > div h3,
+  #profile-section .details-nav-container > div h4 {
+    margin: 0;
+  }
+  #profile-section .details-nav-container > div {
+    flex-direction: column;
+    padding: 20px 0 40px;
+    width: 95%;
+    gap: 20px;
+  }
+
+  #profile-section .intro-card {
+    border-radius: 12px;
+    padding: 13px 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 15px;
+    background-color: rgba(245, 245, 245, 1);
+  }
+  #profile-section .intro-card .first-part {
+    display: flex;
+    gap: 15px;
+  }
+  #profile-section .intro-card .profile-first-part {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #profile-section .intro-card .profile-img-holder {
+    border-radius: 50%;
+    border: 1px solid rgba(235, 235, 235, 1);
+    width: 74px;
+    height: 74px;
+  }
+  #profile-section .intro-card .profile-first-part img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #profile-section .profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #profile-section .profile-details label {
+    display: flex;
+    gap: 10px;
+    color: rgba(190, 190, 190, 1);
+  }
+  #profile-section .profile-details label span {
+    color: rgba(230, 44, 54, 1);
+  }
+  #profile-section .profile-intro-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  #profile-section .profile-intro-actions button {
+    padding: 12px 16px;
+  }
+  #profile-section .profile-intro-actions button:first-child {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 12px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+  }
+  #profile-section .profile-intro-actions button:last-child {
+    width: 45%;
+  }
+  .delete-btn {
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 221, 221, 1);
+    color: rgba(230, 44, 54, 1);
+  }
+  #profile-section .profile-form-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #profile-section .field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #profile-section .field label {
+    font-size: 15px;
+  }
+  #profile-section .field input {
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(236, 236, 236, 1);
+    background-color: rgba(245, 245, 245, 1);
+  }
+  #profile-section .form-action {
+    display: flex;
+  }
+  #profile-section .green-btn {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid rgba(189, 255, 203, 1);
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: rgba(0, 168, 36, 1);
+    color: white;
+    font-weight: bold;
+  }
   /*------- Footer Section Styles -------*/
   #footer-section {
     position: relative;
@@ -3554,6 +3765,13 @@
   /*----- Order Section Styles ----*/
   #order-section .payment-item {
     width: 22.5%;
+  }
+  /*------ Profile Section Styles -----*/
+  #profile-section .profile-intro-actions button:first-child {
+    width: 80%;
+  }
+  #profile-section .profile-intro-actions button:last-child {
+    width: 45%;
   }
 }
 
@@ -4278,7 +4496,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    justify-content: center;
+    justify-content: space-between;
     padding: 0;
     flex-direction: row;
     z-index: 5;
@@ -4421,7 +4639,52 @@
     background-color: rgba(245, 245, 245, 1);
     border: 1px solid rgba(217, 217, 217, 1);
   }
+  /*--------- Profile Section Styles ------*/
+  #profile-section .profile-content {
+    flex-direction: row;
+    gap: 10px;
+    padding: 30px 20px;
+  }
 
+  #profile-section .primary-nav ul {
+    flex-direction: column;
+  }
+  #profile-section .primary-nav ul li {
+    background-color: transparent;
+    width: 70%;
+  }
+  #profile-section .profile-content .first-part,
+  #profile-section .profile-content .second-part {
+    overflow: hidden;
+    border: 1px solid rgba(235, 235, 235, 1);
+    background-color: rgba(252, 252, 252, 1);
+    border-radius: 16px;
+  }
+  #profile-section .profile-content .second-part {
+    width: 80%;
+  }
+  #profile-section .profile-content .first-part {
+    width: 20%;
+    height: fit-content;
+  }
+  #profile-section .primary-nav ul hr {
+    display: block;
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: rgba(245, 245, 245, 1);
+  }
+  #profile-section .profile-form-details {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  #profile-section .field {
+    width: 45%;
+  }
+  #profile-section .form-action {
+    align-self: flex-end;
+  }
   /*--------- Footer Section Styles -------*/
   #footer-section {
     padding: 8% 0 2% 0;
@@ -4730,6 +4993,24 @@
   #order-section .adress-tablet {
     display: flex;
   }
+  /*--------- Profile --------*/
+  #profile-section .profile-content {
+    padding: 30px 80px;
+  }
+  #profile-section .primary-nav ul li {
+    width: 80%;
+  }
+  #profile-section .intro-card {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  #profile-section .profile-intro-actions {
+    width: 50%;
+  }
+  #profile-section .profile-intro-actions button:first-child {
+    width: 70%;
+  }
+
   /*--------- Footer Section Styles -------*/
   #footer-section .browsing-main-container {
     width: 55%;
@@ -4971,6 +5252,19 @@
   }
   #order-section .order-content .second-part {
     width: 50%;
+  }
+  /*--------- Profile --------*/
+  #profile-section .profile-content {
+    padding: 30px 120px;
+  }
+  #profile-section .primary-nav ul li {
+    width: 85%;
+  }
+  #profile-section .profile-intro-actions {
+    width: 35%;
+  }
+  #profile-section .profile-intro-actions button:first-child {
+    width: 70%;
   }
   /*--------- Footer Section Styles -------*/
   #footer-section .browsing-main-container {

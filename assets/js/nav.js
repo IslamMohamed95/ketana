@@ -253,7 +253,9 @@ function initNavEvents() {
         if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active");
           li.style.color = "red";
-          li.textContent = `- ${li.textContent.replace(/^- /, "")}`;
+          mobLis.forEach((li) => {
+            li.textContent = `- ${li.textContent.replace(/^- /, "")}`;
+          });
         }
       });
 
@@ -325,6 +327,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (orderPageBtn) {
           orderPageBtn.addEventListener("click", () => {
             window.location.href = "order.html";
+          });
+        }
+
+        // Navigate to profile.html when clicking images in cart-holder
+        const cartHolderImages = document.querySelectorAll(".cart-holder img");
+        if (cartHolderImages.length) {
+          cartHolderImages.forEach((img) => {
+            img.addEventListener("click", () => {
+              window.location.href = "profile.html";
+            });
           });
         }
 

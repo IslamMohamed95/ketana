@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <title>قطعنا</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section id="profile-section">
+      <!-- Nav Dynamic REndering ----->
+      <div id="shared-nav"></div>
+
+      <div class="profile-content">
+        <div class="first-part">
+          <div class="primary-nav">
+            <ul>
+              <li class="profile-op hover">
+                <i class="fa-solid fa-user"></i>
+                <label>ملفي الشخصي</label>
+              </li>
+              <hr />
+              <li class="profile-settings hover">
+                <i class="fa-solid fa-plus"></i>
+                <label>منتجاتي</label>
+              </li>
+              <hr />
+              <li class="hover">
+                <i class="fa-solid fa-ticket"></i>
+                <label>عروضي</label>
+              </li>
+              <hr />
+              <li class="hover">
+                <i class="fa-solid fa-database"></i>
+                <label>متجر البيانات</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="second-part">
+          <div class="nav-container">
+            <div id="profile-data" class="secondary-nav">
+              <ul class="profile-op">
+                <li class="basic-info hover">البيانات الأساسية</li>
+                <li class="hover">إعدادات الحساب</li>
+                <li class="hover">إدارة المفوضين</li>
+                <li class="hover">بيانات الحساب البنكي</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="details-nav-container">
+            <div class="basic-info">
+              <h3>بيانات الحساب الأساسية</h3>
+
+              <div class="intro-card">
+                <div class="profile-first-part">
+                  <div class="profile-img-holder">
+                    <img
+                      src="./assets/images/users/admin.png"
+                      alt="profileImg"
+                    />
+                  </div>
+
+                  <div class="profile-details">
+                    <h4>أحمد محمد السالم</h4>
+                    <label>
+                      <span>ID</span>
+                      <p>38476635483</p>
+                    </label>
+                  </div>
+                </div>
+                <div class="profile-intro-actions">
+                  <button>
+                    <img src="./assets/images/profile/profile.svg" alt="img" />
+                    <label>تغيير الصورة</label>
+                  </button>
+                  <button class="delete-btn">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <label>تغيير الصورة</label>
+                  </button>
+                </div>
+              </div>
+
+              <div class="profile-form-details">
+                <div class="field">
+                  <label>البريد الإلكتروني</label>
+                  <input
+                    type="email"
+                    aria-label="email"
+                    value="أحمد محمد السالم"
+                    readonly
+                  />
+                </div>
+
+                <div class="field">
+                  <label>اسم المؤسسة / الشركة</label>
+                  <input type="text" aria-label="text" readonly />
+                </div>
+
+                <div class="field">
+                  <label>البريد الإلكتروني</label>
+                  <input type="email" aria-label="email" readonly />
+                </div>
+
+                <div class="field">
+                  <label>رقم الجوال</label>
+                  <input type="number" aria-label="mobile" readonly />
+                </div>
+
+                <div class="field">
+                  <label>العنوان</label>
+                  <input type="text" aria-label="email" readonly />
+                </div>
+              </div>
+              <div class="form-action">
+                <button class="green-btn">
+                  <img src="./assets/images/profile/green img.svg" alt="img" />
+                  <label>تعديل البيانات</label>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--- Footer Dynamic Rendering -->
+      <section id="footer-section"></section>
+    </section>
+
+    <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/profile.js"></script>
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/offer.js"></script>
+    <script type="module" src="./assets/js/index.js"></script>
+  </body>
+</html>
