@@ -2548,7 +2548,7 @@
     background-color: rgba(60, 7, 0, 1);
   }
   #database-section .table {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     width: 95%;
     overflow-x: auto;
     display: flex;
@@ -2629,7 +2629,9 @@
   tbody tr:last-child td {
     border-bottom: none;
   }
-
+  #database-section #pagination-section {
+    display: none;
+  }
   /*------- Footer Section Styles -------*/
   #footer-section {
     position: relative;
@@ -3482,6 +3484,14 @@
   }
   #database-section .table {
     flex-direction: column;
+    margin-bottom: 0px;
+  }
+  #database-section #pagination-section {
+    width: fit-content;
+    display: flex;
+    margin-top: 0;
+    align-self: flex-end;
+    margin-bottom: 150px;
   }
   #database-section button {
     align-self: flex-end;
