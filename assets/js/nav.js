@@ -3,13 +3,51 @@ function initNavEvents() {
   const sharedNav = document.getElementById("shared-nav");
   if (!sharedNav) return;
 
+  /* --------- Cart Menu Logic --------- */
+  const cartMenu = sharedNav.querySelector(".cart-menu");
+  const cartIcon = sharedNav.querySelector(".user-cart");
+  const cartCloseIcon = cartMenu?.querySelector(".fa-xmark");
+  const cartViewBtn = cartMenu?.querySelector(".view"); // "عرض تفاصيل السلة" button
+
+  if (cartMenu) {
+    cartMenu.style.transform = "translateX(103%)";
+    cartMenu.style.transition = "transform 0.3s ease";
+
+    cartIcon?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      cartMenu.style.transform = "translateX(0)";
+      document.body.style.overflow = "hidden";
+      if (mobNavContainer) mobNavContainer.style.transform = "translateX(103%)";
+    });
+
+    cartCloseIcon?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      cartMenu.style.transform = "translateX(103%)";
+      document.body.style.overflow = "";
+    });
+
+    document.addEventListener("click", () => {
+      cartMenu.style.transform = "translateX(103%)";
+      document.body.style.overflow = "";
+    });
+
+    cartMenu.addEventListener("click", (e) => e.stopPropagation());
+
+    // --------- Cart View Button Logic ---------
+    cartViewBtn?.addEventListener("click", () => {
+      if (typeof window.updateBreadcrumb === "function") {
+        window.updateBreadcrumb("سلة المشتريات");
+      }
+      window.location.href = "cartView.html";
+    });
+  }
+
   /* --------- Update Nav by Login Status --------- */
   function updateNavByLoginStatus() {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     const navList = sharedNav.querySelector("#nav-container ul");
     if (!navList) return;
 
-    // ✅ Always show all li and hr (ignore login status for navigation items)
     Array.from(navList.children).forEach((el) => {
       el.style.display = "";
     });
@@ -45,10 +83,8 @@ function initNavEvents() {
   function updateBreadcrumb(pageName, productName = null) {
     const holder = document.getElementById("nav-details");
     if (!holder) return;
-
     holder.innerHTML = "";
 
-    // Home link
     const homeLink = document.createElement("a");
     homeLink.textContent = "الرئيسية";
     homeLink.href = "index.html";
@@ -56,7 +92,6 @@ function initNavEvents() {
     homeLink.style.textDecoration = "none";
     holder.appendChild(homeLink);
 
-    // Page name
     if (pageName !== "الرئيسية") {
       const slash = document.createElement("span");
       slash.textContent = " / ";
@@ -159,12 +194,10 @@ function initNavEvents() {
 
     if (loginBtnLocal)
       loginBtnLocal.style.display = isLoggedIn ? "none" : "block";
-
     if (navContainer) {
       navContainer.style.display = "flex";
       navContainer.style.flexDirection = isLoggedIn ? "row-reverse" : "";
     }
-
     if (accountSummary)
       accountSummary.style.display = isLoggedIn ? "flex" : "none";
     if (logoIndex) logoIndex.style.display = isLoggedIn ? "none" : "flex";
@@ -178,17 +211,13 @@ function initNavEvents() {
 
     if (mobileNavIcon) {
       const screenWidth = window.innerWidth;
-      if (isLoggedIn && screenWidth >= 768) {
+      if (isLoggedIn && screenWidth >= 768)
         mobileNavIcon.style.display = "none";
-      } else {
-        mobileNavIcon.style.display = "";
-      }
+      else mobileNavIcon.style.display = "";
       mobileNavIcon.style.width = "auto";
     }
 
-    /* Tablet nav */
     const tabletLis = sharedNav.querySelectorAll(".tablet-nav-el ul li");
-    /* Mobile nav */
     const mobLis = mobNavContainer?.querySelectorAll("ul li") || [];
 
     function clearAllActive() {
@@ -235,6 +264,10 @@ function initNavEvents() {
       if (pageName.includes("العروض")) window.location.href = "offer.html";
       if (pageName.includes("تواصل معنا"))
         window.location.href = "contact.html";
+      if (pageName.includes("متجر البيانات"))
+        window.location.href = "database.html";
+      if (pageName.includes("سلة المشتريات"))
+        window.location.href = "cartView.html";
     }
 
     tabletLis.forEach((li) => {
@@ -287,6 +320,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "about.html": "من نحن",
           "contact.html": "تواصل معنا",
           "offer.html": "العروض",
+          "database.html": "متجر البيانات",
+          "cartView.html": "سلة المشتريات", // ✅ added for breadcrumb
         };
         if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
           window.updateBreadcrumb(map[currentPage]);
