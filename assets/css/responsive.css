@@ -388,23 +388,25 @@
     color: rgba(0, 168, 36, 1);
     font-weight: bold;
   }
-  #cart-view-container .cost-container {
+  .cost-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-
     border: 8px solid rgba(245, 245, 245, 1);
     border-radius: 14px;
   }
-  #cart-view-container .details-and-actions {
+  #order-section .cost-container {
+    border: 1px solid rgba(245, 245, 245, 1);
+  }
+  .details-and-actions {
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
   }
-  #cart-view-container .prices-container {
+  .prices-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -413,44 +415,44 @@
   #cart-view-container .code-action {
     display: none;
   }
-  #cart-view-container .detailed-price {
+  .detailed-price {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  #cart-view-container .detailed-price > div,
-  #cart-view-container .cart-view-total-price {
+  .detailed-price > div,
+  .cart-view-total-price {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
   }
-  #cart-view-container .detailed-price > div {
+  .detailed-price > div {
     font-size: 12px;
   }
-  #cart-view-container .detailed-price > div > div {
+  .detailed-price > div > div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
   }
-  #cart-view-container .detailed-price > div span {
+  .detailed-price > div span {
     font-weight: bold;
   }
-  #cart-view-container .detailed-price > div:nth-child(1),
-  #cart-view-container .detailed-price > div:nth-child(2) {
+  .detailed-price > div:nth-child(1),
+  .detailed-price > div:nth-child(2) {
     border-bottom: 1px solid rgba(245, 245, 245, 1);
   }
-  #cart-view-container .cart-view-total-price {
+  .cart-view-total-price {
     font-size: 15px;
   }
-  #cart-view-container .cart-view-total-price > div {
+  .cart-view-total-price > div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
   }
-  #cart-view-container .cart-view-total-price > div span {
+  .cart-view-total-price > div span {
     color: rgba(0, 168, 36, 1);
     font-weight: bold;
   }
@@ -3077,6 +3079,274 @@
     color: rgba(0, 168, 36, 1);
     padding: 1px 7.52px;
   }
+
+  #order-section .second-part {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  #order-section .second-part .payment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  #order-section .second-part .payment-container .payment-method {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10.5px;
+    position: relative;
+  }
+
+  /* Each image wrapper */
+  .payment-item {
+    position: relative;
+    width: 22%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* The payment image */
+  .payment-item img {
+    width: 100%;
+    border: 1px solid rgba(224, 224, 224, 1);
+    border-radius: 12px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    display: block;
+  }
+
+  /* Active effect */
+  .payment-item.activePayment img {
+    opacity: 1;
+    box-shadow: 0px 0px 10px 0 rgba(48, 109, 254, 0.5);
+  }
+
+  /* Checkmark icon */
+  .payment-item i.fa-circle-check {
+    display: none;
+    position: absolute;
+    bottom: -5px; /* half outside the image */
+
+    color: rgba(0, 137, 55, 1);
+    font-size: 20px;
+  }
+
+  /* Show checkmark when active */
+  .payment-item.activePayment i.fa-circle-check {
+    display: block;
+  }
+
+  /* Active effect */
+  #order-section
+    .second-part
+    .payment-container
+    .payment-method
+    img.activePayment {
+    opacity: 1;
+    box-shadow: 0px 0px 10px 0 rgba(48, 109, 254, 0.5);
+  }
+
+  /* Checkmark icon */
+  #order-section
+    .second-part
+    .payment-container
+    .payment-method
+    img.activePayment::after {
+    content: "\f058"; /* Font Awesome check circle */
+    font-family: "Font Awesome 6 Free"; /* make sure FA 6 is loaded */
+    font-weight: 900;
+    color: rgba(0, 137, 55, 1);
+    position: absolute;
+    bottom: -10px; /* half outside the image */
+    right: -10px;
+    font-size: 20px;
+  }
+  #order-section .personal-info,
+  #order-section .address-mob {
+    display: flex;
+  }
+  #order-section .card-info,
+  #order-section .tablet-form-address {
+    display: none;
+  }
+  #order-section .personal-info,
+  #order-section .card-info,
+  #order-section .address-mob,
+  #order-section .tablet-form-address {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #order-section .personal-info > div:last-child,
+  #order-section .card-info > div:last-child,
+  #order-section .address-mob > div:nth-child(2),
+  #order-section .address-mob > div:nth-child(3),
+  #order-section .tablet-form-address > div:nth-child(1),
+  #order-section .tablet-form-address > div:nth-child(3) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+  #order-section .fill-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #order-section .fill-data > div {
+    background-color: rgba(236, 236, 236, 1);
+    border-radius: 10px;
+    overflow: hidden;
+
+    padding: 10px;
+  }
+  #order-section .id-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #order-section .id-input img {
+    width: 70px;
+    height: 35px;
+    border-radius: 5px;
+    display: none;
+  }
+  #order-section .national-id {
+    width: 100%;
+  }
+  #order-section .fill-data label {
+    font-size: 14px;
+  }
+  #order-section .fill-data input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+  }
+  #order-section .code-action,
+  #order-section .tax-note {
+    display: none;
+  }
+  #order-section .mob-action-pay,
+  #order-section .tablet-confirm {
+    margin: 20px 0 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #order-section .mob-action-pay button,
+  #order-section .tablet-confirm button {
+    width: 90%;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 20px;
+    background-color: rgba(22, 199, 60, 1);
+    box-shadow: 0px 20px 30px 0px rgba(22, 199, 60, 0.3);
+    color: white;
+    font-weight: bold;
+  }
+  #order-section .trust {
+    color: rgba(112, 112, 112, 1);
+    font-size: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #order-section .address-tablet {
+    display: none;
+  }
+  #order-section .address-tablet {
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px 20px;
+  }
+  #order-section .address-tablet h3 {
+    margin: 0;
+  }
+  #order-section .address-tablet .addresses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  #order-section .address-tablet .address-holder {
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 14px;
+    border: 1px solid rgba(48, 109, 254, 1);
+    background-color: rgba(227, 235, 255, 0.2);
+    border-radius: 14px;
+  }
+  #order-section .address-tablet .address-holder > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #order-section .address-tablet .address-holder > div:first-child > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    color: rgba(48, 109, 254, 1);
+  }
+  #order-section .address-tablet .address-holder > div:first-child > span {
+    background-color: rgba(48, 109, 254, 1);
+    padding: 2.99px 12.69px;
+    border-radius: 44.79px;
+    color: white;
+  }
+  #order-section .address-tablet .address-holder label {
+    color: rgba(130, 130, 130, 1);
+  }
+  #order-section .address-tablet .address-holder p {
+    margin: 0;
+  }
+  #order-section .address-tablet .address-holder > div:last-child,
+  #order-section .address-tablet .address-holder > div:nth-child(2) {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  p.truncate {
+    white-space: nowrap; /* keep text on a single line */
+    overflow: hidden; /* hide overflow */
+    text-overflow: ellipsis; /* show "..." at the end */
+    max-width: 100%; /* fit container width */
+  }
+
+  #order-section .add-address {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(59, 108, 223, 1);
+  }
+  #order-section .policy-check {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(64, 64, 64, 1);
+  }
+  #order-section .policy-check input {
+    width: 15px;
+    height: 15px;
+  }
+  #order-section .policy-check span {
+    margin-right: 4px;
+    color: rgba(230, 44, 54, 1);
+    text-decoration: underline;
+  }
+  #order-section .close {
+    display: none;
+  }
+  #order-section .tablet-form-address {
+    display: none;
+  }
   /*------- Footer Section Styles -------*/
   #footer-section {
     position: relative;
@@ -3280,6 +3550,10 @@
   /*----------- About Section ----------*/
   #about .what-we-offer ul li label {
     font-size: 18px;
+  }
+  /*----- Order Section Styles ----*/
+  #order-section .payment-item {
+    width: 22.5%;
   }
 }
 
@@ -3557,7 +3831,7 @@
     align-items: center;
     background-color: rgba(255, 245, 234, 1);
   }
-  #cart-view-container .code-action {
+  .code-action {
     align-self: center;
     width: 80%;
     justify-content: space-between;
@@ -3565,17 +3839,17 @@
     background-color: rgba(246, 246, 246, 1);
     padding: 10px;
   }
-  #cart-view-container .code-action > div {
+  .code-action > div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
     font-size: 12px;
   }
-  #cart-view-container .code-action label {
+  .code-action label {
     color: rgba(48, 109, 254, 1);
   }
-  #cart-view-container .code-action > div span {
+  .code-action > div span {
     color: rgba(130, 130, 130, 1);
   }
   #cart-view-container .cart-view-item {
@@ -3997,6 +4271,157 @@
   #database-section .search-container > div > div {
     width: max-content;
   }
+  /*---------- Order Section Styles -----*/
+  #order-section .order-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 0;
+    flex-direction: row;
+    z-index: 5;
+    background-color: white;
+  }
+  #order-section .order-content .second-part {
+    justify-content: flex-start;
+    padding: 40px 10px;
+    width: 50%;
+    overflow-y: scroll;
+  }
+  #order-section .payment-item {
+    width: 15%;
+  }
+  #order-section .order-content > .first-part {
+    padding: 40px 20px;
+
+    height: 100%;
+    width: 35%;
+    background-color: rgba(245, 245, 245, 1);
+  }
+  #order-section .order-product .middle-part {
+    display: none;
+  }
+  #order-section .second-part .personal-info {
+    display: none;
+  }
+  #order-section .order-content .order-product .first-part > div {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    width: fit-content;
+  }
+  #order-section .order-content .order-product .first-part > div span {
+    width: 30%;
+    text-align: center;
+  }
+  #order-section .order-content .order-product .first-part > div > div span {
+    width: 100%;
+  }
+  #order-section .order-content .order-product .first-part img {
+    width: 20%;
+    height: auto;
+  }
+  #order-section .order-content .order-product .first-part > div > div label {
+    font-size: 14px;
+  }
+  #order-section .order-content .order-product {
+    background-color: white;
+  }
+  #order-section .code-action,
+  #order-section .tax-note {
+    display: flex;
+  }
+  #order-section .code-action {
+    width: 92%;
+  }
+  #order-section .code-action,
+  #order-section .detailed-price,
+  #order-section .cart-view-total-price {
+    background-color: white;
+    border-radius: 10px;
+  }
+  #order-section .cart-view-total-price {
+    color: rgba(0, 168, 36, 1);
+    font-size: 12px;
+  }
+
+  #order-section .second-part .id-input img {
+    display: flex;
+    width: 60px;
+    height: 30px;
+  }
+  #order-section .second-part .card-info {
+    display: flex;
+    border-bottom: 1px solid rgba(245, 245, 245, 1);
+    padding-bottom: 20px;
+  }
+  #order-section .second-part .address-mob {
+    display: none;
+  }
+  #order-section .address-tablet {
+    display: flex;
+    padding: 0 20px 30px 0;
+  }
+  #order-section .close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15px;
+    left: 15px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    background-color: rgba(245, 245, 245, 1);
+    border-radius: 10px;
+  }
+  #order-section .tablet-form-address {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: white;
+    position: fixed;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: column;
+    z-index: 10;
+    /* Transition effect */
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none; /* Prevent interaction when hidden */
+  }
+  #order-section .tablet-form-address.formActive {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto; /* Enable interaction when visible */
+  }
+  #order-section .address-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #order-section .address-btn button {
+    border: none;
+    background-color: rgba(48, 109, 254, 1);
+    border-radius: 12px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px;
+  }
+  #order-section .close-tablet-add-address {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 1);
+    border: 1px solid rgba(217, 217, 217, 1);
+  }
+
   /*--------- Footer Section Styles -------*/
   #footer-section {
     padding: 8% 0 2% 0;
@@ -4282,6 +4707,29 @@
   #database-section .search-container > div > div {
     width: 40%;
   }
+  /*---- Order Section Styles -------*/
+  #order-section .order-content .order-product {
+    flex-direction: row;
+    align-items: center;
+  }
+  #order-section .order-product .last-part {
+    gap: 25px;
+  }
+  #order-section .order-content .order-product .first-part img {
+    width: 30%;
+  }
+  #order-section .order-content > .first-part {
+    width: 40%;
+  }
+  #order-section .code-action {
+    width: 95%;
+  }
+  #order-section .payment-item {
+    width: 15%;
+  }
+  #order-section .adress-tablet {
+    display: flex;
+  }
   /*--------- Footer Section Styles -------*/
   #footer-section .browsing-main-container {
     width: 55%;
@@ -4510,6 +4958,19 @@
   /*-------- Offer Section Styles ----------*/
   #offer-section #services-items-container > div {
     width: 28.5%;
+  }
+  /*----- Order Section Styles --------*/
+  #order-section .order-content .order-product .first-part img {
+    width: 30%;
+  }
+  #order-section .order-content > .first-part {
+    width: 30%;
+  }
+  #order-section .payment-item {
+    width: 10%;
+  }
+  #order-section .order-content .second-part {
+    width: 50%;
   }
   /*--------- Footer Section Styles -------*/
   #footer-section .browsing-main-container {
