@@ -7,7 +7,6 @@ function initNavEvents() {
   const cartMenu = sharedNav.querySelector(".cart-menu");
   const cartIcon = sharedNav.querySelector(".user-cart");
   const cartCloseIcon = cartMenu?.querySelector(".fa-xmark");
-  const cartViewBtn = cartMenu?.querySelector(".view"); // "عرض تفاصيل السلة" button
 
   if (cartMenu) {
     cartMenu.style.transform = "translateX(103%)";
@@ -33,12 +32,19 @@ function initNavEvents() {
 
     cartMenu.addEventListener("click", (e) => e.stopPropagation());
 
-    // --------- Cart View Button Logic ---------
-    cartViewBtn?.addEventListener("click", () => {
-      if (typeof window.updateBreadcrumb === "function") {
-        window.updateBreadcrumb("سلة المشتريات");
+    // --------- Cart Menu Buttons Logic ---------
+    cartMenu.addEventListener("click", (e) => {
+      if (e.target.classList.contains("view")) {
+        // "عرض تفاصيل السلة"
+        if (typeof window.updateBreadcrumb === "function") {
+          window.updateBreadcrumb("سلة المشتريات");
+        }
+        window.location.href = "cartView.html";
       }
-      window.location.href = "cartView.html";
+      if (e.target.classList.contains("order")) {
+        // "إتمام الطلب" button inside cart menu
+        window.location.href = "order.html";
+      }
     });
   }
 
@@ -268,6 +274,7 @@ function initNavEvents() {
         window.location.href = "database.html";
       if (pageName.includes("سلة المشتريات"))
         window.location.href = "cartView.html";
+      if (pageName.includes("إتمام الطلب")) window.location.href = "order.html";
     }
 
     tabletLis.forEach((li) => {
@@ -313,6 +320,14 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("initNavEvents error:", err);
         }
 
+        // Add click listener for #order button on cartView.html
+        const orderPageBtn = document.getElementById("order");
+        if (orderPageBtn) {
+          orderPageBtn.addEventListener("click", () => {
+            window.location.href = "order.html";
+          });
+        }
+
         const currentPage = window.location.pathname.split("/").pop();
         const map = {
           "index.html": "الرئيسية",
@@ -321,7 +336,8 @@ document.addEventListener("DOMContentLoaded", () => {
           "contact.html": "تواصل معنا",
           "offer.html": "العروض",
           "database.html": "متجر البيانات",
-          "cartView.html": "سلة المشتريات", // ✅ added for breadcrumb
+          "cartView.html": "سلة المشتريات",
+          "order.html": "إتمام الطلب",
         };
         if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
           window.updateBreadcrumb(map[currentPage]);

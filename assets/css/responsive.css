@@ -49,6 +49,7 @@
   /*------------ Nav Styles ------------*/
 
   #shared-nav {
+    border-bottom: 1px solid rgb(214, 214, 214);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -2958,11 +2959,130 @@
   #database-section #pagination-section {
     display: none;
   }
+  /*------- Order Section Styles --------*/
+  #order-section {
+    width: 100%;
+  }
+  #order-section .order-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 10px;
+  }
+  #order-section .order-content .first-part {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #order-section .order-content .order-products-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #order-section .order-content .order-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid rgba(220, 220, 220, 1);
+    border-radius: 10px;
+  }
+  #order-section .order-content .order-product .first-part {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+  }
+  #order-section .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  #order-section .title span {
+    direction: ltr;
+    background-color: grey;
+    color: white;
+    padding: 2px;
+    font-size: 12px;
+  }
+  #order-section .title h3 {
+    margin: 0;
+  }
+  #order-section .order-content .order-product .first-part > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  #order-section .order-content .order-product .first-part > div > span {
+    background-color: rgba(0, 53, 179, 1);
+    border-radius: 53.15px;
+    height: fit-content;
+    padding: 3px 12px;
+    color: white;
+    font-size: 12px;
+  }
+  #order-section .order-content .order-product .first-part > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  #order-section .order-content .order-product .first-part > div > div span {
+    font-size: 12px;
+    color: rgba(239, 85, 93, 1);
+  }
+  #order-section .order-content .order-product .first-part img {
+    width: 15%;
+    padding: 5px 1px;
+    border-radius: 10px;
+    border: 1px solid rgb(214, 214, 214);
+  }
+  #order-section .order-product .middle-part {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+  }
+  #order-section .order-product .middle-part i {
+    color: rgba(255, 148, 38, 1);
+  }
+  #order-section .order-product .last-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #order-section .order-product .last-part > div:first-child {
+    display: flex;
+    align-items: center;
+    background-color: rgba(235, 235, 235, 1);
+    border-radius: 7.52px;
+    padding: 8px 12px;
+    gap: 3px;
+  }
+  #order-section .order-product .last-part > div:first-child input {
+    width: 20px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(48, 109, 254, 1);
+  }
+  #order-section .order-product .last-part > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    background-color: rgba(240, 255, 243, 1);
+    color: rgba(0, 168, 36, 1);
+    padding: 1px 7.52px;
+  }
   /*------- Footer Section Styles -------*/
   #footer-section {
     position: relative;
     background-color: rgba(25, 25, 25, 1);
     width: 100%;
+    min-height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2974,6 +3094,7 @@
   }
   #footer-section .first-part {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

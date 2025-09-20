@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <title>قطعنا</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section id="order-section">
+      <!-- Nav Dynamic REndering ----->
+      <div id="shared-nav"></div>
+
+      <div class="order-content">
+        <div class="first-part">
+          <div class="title">
+            <h3>ملخص الطلب</h3>
+            <span>2 Items</span>
+          </div>
+          <div class="order-products-container">
+            <div class="order-product">
+              <div class="first-part">
+                <img
+                  src="./assets/images/products/product.png"
+                  alt="productImg"
+                />
+                <div>
+                  <div>
+                    <label>كمبروسر مكيف</label>
+                    <span>88320-06100</span>
+                  </div>
+                  <span>اصلي</span>
+                </div>
+              </div>
+              <div class="middle-part">
+                <span>4.2</span>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="last-part">
+                <div>
+                  <i class="fa-solid fa-plus"></i>
+                  <input type="number" aria-label="number" value="2" />
+                  <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <div>
+                  <span>234</span>
+                  <img
+                    src="./assets/images/products/currency.svg"
+                    alt="currency"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--- Footer Dynamic Rendering -->
+      <section id="footer-section"></section>
+    </section>
+
+    <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/offer.js"></script>
+    <script type="module" src="./assets/js/index.js"></script>
+  </body>
+</html>

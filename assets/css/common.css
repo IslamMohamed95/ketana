@@ -43,7 +43,8 @@
 
 html,
 body {
-  flex-direction: column;
+  height: 100%;
+
   direction: rtl;
   overflow-x: hidden;
   margin: 0;
@@ -57,6 +58,7 @@ html {
 
 body {
   display: flex;
+  flex-direction: column;
 }
 
 input:focus {
