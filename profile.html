@@ -54,7 +54,7 @@
                 <li class="basic-info hover">البيانات الأساسية</li>
                 <li class="profile-sett hover">إعدادات الحساب</li>
                 <li class="manage-dealer hover">إدارة المفوضين</li>
-                <li class="hover">بيانات الحساب البنكي</li>
+                <li class="bank-data hover">بيانات الحساب البنكي</li>
               </ul>
             </div>
           </div>
@@ -87,7 +87,7 @@
                   </button>
                   <button class="delete-btn">
                     <i class="fa-solid fa-trash-can"></i>
-                    <label>تغيير الصورة</label>
+                    <label>حذف</label>
                   </button>
                 </div>
               </div>
@@ -123,6 +123,7 @@
                   <input type="text" aria-label="email" readonly />
                 </div>
               </div>
+
               <div class="form-action">
                 <button class="green-btn">
                   <img src="./assets/images/profile/green img.svg" alt="img" />
@@ -217,7 +218,7 @@
             <div class="manage-dealer">
               <div class="dealer-intro">
                 <h3>المفوضون المسجلون</h3>
-                <button class="green-btn">
+                <button class="green-btn" id="add-dealer">
                   <img src="./assets/images/profile/dealer.svg" alt="img" />
                   <label>إضافة مفوض جديد</label>
                 </button>
@@ -243,43 +244,17 @@
                           <i class="fa-solid fa-ellipsis-vertical"></i>
                         </button>
                         <ul class="dropdown">
-                          <li>
-                            <i class="fa-solid fa-pen"></i> تعديل بيانات المفوض
+                          <li class="hover edit-dealer-data">
+                            <i class="fa-solid fa-pen"></i>
+                            تعديل بيانات المفوض
                           </li>
-                          <li>
-                            <i class="fa-solid fa-rotate-left"></i> إعادة تعيين
-                            كلمة المرور
+                          <li class="hover edit-dealer-password">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            إعادة تعيين كلمة المرور
                           </li>
-                          <li class="delete">
-                            <i class="fa-solid fa-trash"></i> حذف المفوض
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="table-cell">2025/07/28 - 11:30ص</div>
-                    <div class="table-cell">
-                      <span class="status-active">مفعل</span>
-                    </div>
-                    <div class="table-cell">+966 55 888 4444</div>
-                    <div class="table-cell">abdullah@email.com</div>
-                    <div class="table-cell">عبدالله الشمري</div>
-                  </div>
-                  <div class="table-row">
-                    <div class="table-cell">
-                      <div class="options">
-                        <button>
-                          <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                        <ul class="dropdown">
-                          <li>
-                            <i class="fa-solid fa-pen"></i> تعديل بيانات المفوض
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-rotate-left"></i> إعادة تعيين
-                            كلمة المرور
-                          </li>
-                          <li class="delete">
-                            <i class="fa-solid fa-trash"></i> حذف المفوض
+                          <li class="hover dealer-delete">
+                            <i class="fa-solid fa-trash"></i>
+                            حذف المفوض
                           </li>
                         </ul>
                       </div>
@@ -292,63 +267,207 @@
                     <div class="table-cell">abdullah@email.com</div>
                     <div class="table-cell">عبدالله الشمري</div>
                   </div>
-                  <div class="table-row">
-                    <div class="table-cell">
-                      <div class="options">
-                        <button>
-                          <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                        <ul class="dropdown">
-                          <li>
-                            <i class="fa-solid fa-pen"></i> تعديل بيانات المفوض
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-rotate-left"></i> إعادة تعيين
-                            كلمة المرور
-                          </li>
-                          <li class="delete">
-                            <i class="fa-solid fa-trash"></i> حذف المفوض
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="table-cell">2025/07/28 - 11:30ص</div>
-                    <div class="table-cell">
-                      <span class="status-active">مفعل</span>
-                    </div>
-                    <div class="table-cell">+966 55 888 4444</div>
-                    <div class="table-cell">abdullah@email.com</div>
-                    <div class="table-cell">عبدالله الشمري</div>
-                  </div>
-                  <div class="table-row">
-                    <div class="table-cell">
-                      <div class="options">
-                        <button>
-                          <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                        <ul class="dropdown">
-                          <li>
-                            <i class="fa-solid fa-pen"></i> تعديل بيانات المفوض
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-rotate-left"></i> إعادة تعيين
-                            كلمة المرور
-                          </li>
-                          <li class="delete">
-                            <i class="fa-solid fa-trash"></i> حذف المفوض
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="table-cell">2025/07/28 - 11:30ص</div>
-                    <div class="table-cell">
-                      <span class="status-active">مفعل</span>
-                    </div>
-                    <div class="table-cell">+966 55 888 4444</div>
-                    <div class="table-cell">abdullah@email.com</div>
-                    <div class="table-cell">عبدالله الشمري</div>
-                  </div>
+
                   <!-- Repeat additional rows as needed -->
+                </div>
+              </div>
+              <div class="dealer-form">
+                <div class="add-dealer">
+                  <div class="form-intro">
+                    <div>
+                      <i class="fa-solid fa-user-plus"></i>
+                      <span>إضافة مفوض جديد</span>
+                    </div>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <div class="profile-form-details">
+                    <div class="field">
+                      <label>الاسم</label>
+                      <input
+                        type="text"
+                        aria-label="email"
+                        placeholder="ادخل اسم المفوض كامل"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>البريد الإلكتروني</label>
+                      <input
+                        type="email"
+                        aria-label="text"
+                        placeholder="ادخل البريد الإلكتروني"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>رقم الجوال</label>
+                      <input
+                        type="number"
+                        aria-label="number"
+                        placeholder="ادخل رقم المفوض"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>حالة الحساب</label>
+                      <input
+                        type="number"
+                        aria-label="mobile"
+                        placeholder="حالة الحساب"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>العنوان</label>
+                      <div class="select">
+                        <input type="text" aria-label="email" readonly />
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                    </div>
+
+                    <div class="form-action-diff-bg">
+                      <button>
+                        <i class="fa-solid fa-check"></i>
+                        <span>اضف المفوض</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="edit-dealer-data">
+                  <div class="form-intro">
+                    <div>
+                      <i class="fa-solid fa-user-plus"></i>
+                      <span>إضافة مفوض جديد</span>
+                    </div>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <div class="profile-form-details">
+                    <div class="field">
+                      <label>الاسم</label>
+                      <input
+                        type="text"
+                        aria-label="email"
+                        placeholder="ادخل اسم المفوض كامل"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>البريد الإلكتروني</label>
+                      <input
+                        type="email"
+                        aria-label="text"
+                        placeholder="ادخل البريد الإلكتروني"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>رقم الجوال</label>
+                      <input
+                        type="number"
+                        aria-label="number"
+                        placeholder="ادخل رقم المفوض"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>حالة الحساب</label>
+                      <input
+                        type="number"
+                        aria-label="mobile"
+                        placeholder="حالة الحساب"
+                        value="مفعل"
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label>العنوان</label>
+                      <div class="select">
+                        <input type="text" aria-label="email" readonly />
+                        <i class="fa-solid fa-angle-down"></i>
+                      </div>
+                    </div>
+
+                    <div class="form-action-diff-bg">
+                      <button>
+                        <i class="fa-solid fa-check"></i>
+                        <span>اضف المفوض</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="edit-dealer-password">
+                  <div class="form-intro">
+                    <div>
+                      <i class="fa-solid fa-pen"></i>
+                      <span>تعديل بيانات المفوض</span>
+                    </div>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <div class="profile-form-details">
+                    <div class="field">
+                      <label>كلمة المرور الجديدة</label>
+                      <div class="select">
+                        <div>
+                          <img
+                            src="./assets/images/profile/passwordIcon.svg"
+                            alt="img"
+                          />
+                          <input
+                            type="password"
+                            aria-label="email"
+                            placeholder="كلمة المرور الجديدة"
+                          />
+                        </div>
+                        <i class="fa-solid fa-eye"></i>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label>تاكيد كلمة المرور الجديدة</label>
+                      <div class="select">
+                        <div>
+                          <img
+                            src="./assets/images/profile/confirmIcon.svg"
+                            alt=""
+                          />
+                          <input
+                            type="password"
+                            aria-label="email"
+                            placeholder="تاكيد كلمة المرور الجديدة"
+                          />
+                        </div>
+                        <i class="fa-solid fa-eye"></i>
+                      </div>
+                    </div>
+
+                    <div class="form-action-diff-bg">
+                      <button>
+                        <i class="fa-solid fa-check"></i>
+                        <span>اضف المفوض</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dealer-delete">
+                  <img
+                    src="./assets/images/profile/delete.svg"
+                    alt="deletImg"
+                  />
+                  <h3>هل أنت متأكد من حذف هذا المفوض؟</h3>
+                  <p>
+                    سيتم حذف حساب المفوض بشكل دائم، ولن يتمكن من الدخول أو إدارة
+                    أي جزء من النظام بعد الآن.
+                  </p>
+                  <span>هذا الإجراء لا يمكن التراجع عنه.</span>
+                  <div>
+                    <button>
+                      <i class="fa-solid fa-trash-can"></i>
+                      <span>تأكيد الحذف</span>
+                    </button>
+                    <button>إلغاء</button>
+                  </div>
                 </div>
               </div>
 
@@ -363,6 +482,61 @@
                   <li class="hover">4</li>
                   <i class="fa-solid fa-chevron-left"></i>
                 </ul>
+              </div>
+            </div>
+
+            <div class="bank-data">
+              <h3>إعدادات الدفع</h3>
+              <div class="warning">
+                <span>⚠️</span>
+                <p>
+                  تأكد أن رقم الـ IBAN صحيح ومطابق لاسم المؤسسة لتجنب أي تأخير
+                  في التحويلات.
+                </p>
+              </div>
+
+              <div class="profile-form-details">
+                <div class="field">
+                  <label>اسم البنك</label>
+                  <input
+                    type="text"
+                    aria-label="email"
+                    value="البنك الأهلي السعودي"
+                  />
+                </div>
+
+                <div class="field">
+                  <label>اسم صاحب الحساب</label>
+                  <input
+                    type="text"
+                    aria-label="text"
+                    value="مؤسسة السالم للتجارة"
+                  />
+                </div>
+
+                <div class="field">
+                  <label>رقم الحساب البنكي</label>
+                  <input type="number" aria-label="email" value="123456789" />
+                </div>
+
+                <div class="field">
+                  <label>رقم الـ IBAN</label>
+                  <input
+                    type="number"
+                    aria-label="mobile"
+                    value="SA03 8000 0000 6080 1016 7519"
+                  />
+                </div>
+              </div>
+
+              <div class="form-action">
+                <button class="green-btn">
+                  <i class="fa-solid fa-pen"></i>
+                  <label>تعديل البيانات</label>
+                </button>
+                <button class="green-btn">
+                  <label>حفظ البيانات</label>
+                </button>
               </div>
             </div>
           </div>

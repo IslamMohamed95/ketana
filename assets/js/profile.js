@@ -67,15 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   navContainer.addEventListener("click", (e) => {
-    if (e.target.tagName === "LI") {
+    if (e.target.tagName.toLowerCase() === "li") {
       const clickedLi = e.target;
       const ul = clickedLi.closest("ul");
       if (!ul) return;
       resetSecondary(ul);
       clickedLi.classList.add("activeSecondaryNav");
-      const liClass = getMatchClass(clickedLi);
+
+      const liClasses = Array.from(clickedLi.classList).filter(
+        (cls) => cls !== "hover" && cls !== "activeSecondaryNav"
+      );
+
       Array.from(detailsDivs).forEach((div) => {
-        div.style.display = div.classList.contains(liClass) ? "flex" : "none";
+        div.style.display = liClasses.some((cls) => div.classList.contains(cls))
+          ? "flex"
+          : "none";
       });
     }
   });
@@ -104,12 +110,71 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Close all dropdowns when clicking outside
   document.addEventListener("click", () => {
     document
       .querySelectorAll("#profile-section .manage-dealer .dropdown")
       .forEach((ul) => ul.classList.remove("open"));
   });
+
+  /* ---------- DEALER FORM LOGIC ---------- */
+  const dealerForm = document.querySelector(".dealer-form");
+
+  function showDealerFormWithMatchingChild(classes) {
+    if (!dealerForm) return;
+    dealerForm.style.display = "flex";
+
+    Array.from(dealerForm.children).forEach((child) => {
+      const match = classes.some((cls) => child.classList.contains(cls));
+      child.style.display = match ? "flex" : "none";
+    });
+  }
+
+  // Click on table dropdown li
+  document.querySelectorAll("#profile-section .dropdown li").forEach((li) => {
+    li.addEventListener("click", (e) => {
+      const liClasses = Array.from(e.currentTarget.classList).filter(
+        (cls) => cls !== "hover"
+      );
+      showDealerFormWithMatchingChild(liClasses);
+    });
+  });
+
+  // Click on add-dealer button
+  const addDealerBtn = document.getElementById("add-dealer");
+  if (addDealerBtn) {
+    addDealerBtn.addEventListener("click", () => {
+      showDealerFormWithMatchingChild(["add-dealer"]);
+    });
+  }
+
+  // Close form on X-mark or إلغاء
+  if (dealerForm) {
+    dealerForm.addEventListener("click", (e) => {
+      const visibleChild = Array.from(dealerForm.children).find(
+        (child) => child.style.display === "flex"
+      );
+      if (!visibleChild) return;
+
+      // Close when clicking the X icon
+      if (
+        e.target.classList.contains("fa-xmark") &&
+        visibleChild.contains(e.target)
+      ) {
+        visibleChild.style.display = "none";
+        dealerForm.style.display = "none";
+      }
+
+      // Close when clicking إلغاء button inside dealer-delete
+      if (
+        e.target.tagName.toLowerCase() === "button" &&
+        e.target.textContent.trim() === "إلغاء" &&
+        visibleChild.classList.contains("dealer-delete")
+      ) {
+        visibleChild.style.display = "none";
+        dealerForm.style.display = "none";
+      }
+    });
+  }
 
   /* ---------- PROFILE-OP INTEGRATION ---------- */
   const profileOperations = Array.from(
