@@ -14,13 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetSecondary(ul) {
-    ul.querySelectorAll("li").forEach((li) => {
-      li.classList.remove("activeSecondaryNav");
-    });
+    ul.querySelectorAll("li").forEach((li) =>
+      li.classList.remove("activeSecondaryNav")
+    );
   }
 
   function getMatchClass(li) {
-    // ignore generic classes like hover/active
     return Array.from(li.classList).find(
       (cls) => cls !== "hover" && cls !== "activePrimaryNav"
     );
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function activatePrimary(primaryLi) {
     resetPrimary();
     primaryLi.classList.add("activePrimaryNav");
-
     const icon = primaryLi.querySelector("i");
     if (icon) icon.classList.add("activePrimaryNavIcon");
 
@@ -42,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     Array.from(detailsDivs).forEach((div) => (div.style.display = "none"));
 
-    // Matching secondary nav
     const matchingUl = navContainer.querySelector(`ul.${primaryClass}`);
     if (matchingUl) {
       matchingUl.style.display = "flex";
@@ -50,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (firstLi) {
         firstLi.classList.add("activeSecondaryNav");
         const secClass = getMatchClass(firstLi);
-
         Array.from(detailsDivs).forEach((div) => {
           div.style.display = div.classList.contains(secClass)
             ? "flex"
@@ -58,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     } else {
-      // No secondary → match direct details
       Array.from(detailsDivs).forEach((div) => {
         div.style.display = div.classList.contains(primaryClass)
           ? "flex"
@@ -67,36 +62,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Primary click
-  primaryLis.forEach((primaryLi) => {
-    primaryLi.addEventListener("click", () => {
-      activatePrimary(primaryLi);
-    });
+  primaryLis.forEach((li) => {
+    li.addEventListener("click", () => activatePrimary(li));
   });
 
-  // Secondary click
   navContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "LI") {
       const clickedLi = e.target;
       const ul = clickedLi.closest("ul");
-
+      if (!ul) return;
       resetSecondary(ul);
       clickedLi.classList.add("activeSecondaryNav");
-
       const liClass = getMatchClass(clickedLi);
-
       Array.from(detailsDivs).forEach((div) => {
         div.style.display = div.classList.contains(liClass) ? "flex" : "none";
       });
     }
   });
 
-  // Default: activate first primary li
-  if (primaryLis[0]) {
-    activatePrimary(primaryLis[0]);
-  }
+  if (primaryLis[0]) activatePrimary(primaryLis[0]);
 
-  /* ---------- TABLE DROPDOWN MENU LOGIC ---------- */
+  /* ---------- DIV-BASED TABLE DROPDOWN LOGIC ---------- */
   const optionButtons = document.querySelectorAll(
     "#profile-section .manage-dealer .options button"
   );
@@ -104,25 +90,41 @@ document.addEventListener("DOMContentLoaded", () => {
   optionButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
+      const dropdown = btn.closest(".options").querySelector(".dropdown");
 
-      const currentOption = btn.closest(".options");
-
-      // Close other menus
+      // Close other dropdowns
       document
-        .querySelectorAll("#profile-section .manage-dealer .options")
-        .forEach((opt) => {
-          if (opt !== currentOption) opt.classList.remove("open");
+        .querySelectorAll("#profile-section .manage-dealer .dropdown")
+        .forEach((ul) => {
+          if (ul !== dropdown) ul.classList.remove("open");
         });
 
-      // Toggle current
-      currentOption.classList.toggle("open");
+      // Toggle current dropdown
+      dropdown.classList.toggle("open");
     });
   });
 
-  // Close dropdowns on outside click
+  // Close all dropdowns when clicking outside
   document.addEventListener("click", () => {
     document
-      .querySelectorAll("#profile-section .manage-dealer .options")
-      .forEach((opt) => opt.classList.remove("open"));
+      .querySelectorAll("#profile-section .manage-dealer .dropdown")
+      .forEach((ul) => ul.classList.remove("open"));
   });
+
+  /* ---------- PROFILE-OP INTEGRATION ---------- */
+  const profileOperations = Array.from(
+    document.querySelectorAll(".primary-nav ul li")
+  ).map((li) => getMatchClass(li));
+
+  window.initProfileOperation = (opClass) => {
+    if (!profileOperations.includes(opClass)) return;
+    const targetLi = document.querySelector(`.primary-nav ul li.${opClass}`);
+    if (targetLi) activatePrimary(targetLi);
+  };
+
+  const pendingOp = localStorage.getItem("pendingProfileOp");
+  if (pendingOp) {
+    window.initProfileOperation(pendingOp);
+    localStorage.removeItem("pendingProfileOp");
+  }
 });

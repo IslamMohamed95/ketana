@@ -8,9 +8,18 @@ function initNavEvents() {
   const cartIcon = sharedNav.querySelector(".user-cart");
   const cartCloseIcon = cartMenu?.querySelector(".fa-xmark");
 
+  const mobNavContainer = sharedNav.querySelector("#nav-mob-container");
+  const mobNavIcon = sharedNav.querySelector(".nav-icon");
+  const mobCloseIcon = sharedNav.querySelector(".fa-xmark");
+
   if (cartMenu) {
     cartMenu.style.transform = "translateX(103%)";
     cartMenu.style.transition = "transform 0.3s ease";
+
+    const closeCart = () => {
+      cartMenu.style.transform = "translateX(103%)";
+      document.body.style.overflow = "";
+    };
 
     cartIcon?.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -21,49 +30,33 @@ function initNavEvents() {
 
     cartCloseIcon?.addEventListener("click", (e) => {
       e.stopPropagation();
-      cartMenu.style.transform = "translateX(103%)";
-      document.body.style.overflow = "";
+      closeCart();
     });
 
-    document.addEventListener("click", () => {
-      cartMenu.style.transform = "translateX(103%)";
-      document.body.style.overflow = "";
-    });
-
+    document.addEventListener("click", closeCart);
     cartMenu.addEventListener("click", (e) => e.stopPropagation());
 
-    // --------- Cart Menu Buttons Logic ---------
     cartMenu.addEventListener("click", (e) => {
       if (e.target.classList.contains("view")) {
-        // "عرض تفاصيل السلة"
         if (typeof window.updateBreadcrumb === "function") {
           window.updateBreadcrumb("سلة المشتريات");
         }
         window.location.href = "cartView.html";
       }
       if (e.target.classList.contains("order")) {
-        // "إتمام الطلب" button inside cart menu
         window.location.href = "order.html";
       }
     });
   }
 
   /* --------- Update Nav by Login Status --------- */
-  function updateNavByLoginStatus() {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const updateNavByLoginStatus = () => {
     const navList = sharedNav.querySelector("#nav-container ul");
     if (!navList) return;
-
-    Array.from(navList.children).forEach((el) => {
-      el.style.display = "";
-    });
-  }
+    Array.from(navList.children).forEach((el) => (el.style.display = ""));
+  };
 
   /* --------- Responsive / Mobile Nav --------- */
-  const mobNavContainer = sharedNav.querySelector("#nav-mob-container");
-  const mobNavIcon = sharedNav.querySelector(".nav-icon");
-  const mobCloseIcon = sharedNav.querySelector(".fa-xmark");
-
   if (mobNavContainer) {
     mobNavContainer.style.transform = "translateX(103%)";
     mobNavContainer.style.transition = "transform 0.3s ease";
@@ -86,7 +79,7 @@ function initNavEvents() {
   }
 
   /* --------- Breadcrumb Logic --------- */
-  function updateBreadcrumb(pageName, productName = null) {
+  const updateBreadcrumb = (pageName, productName = null) => {
     const holder = document.getElementById("nav-details");
     if (!holder) return;
     holder.innerHTML = "";
@@ -134,7 +127,7 @@ function initNavEvents() {
       productSpan.style.color = "rgba(239, 85, 93, 1)";
       holder.appendChild(productSpan);
     }
-  }
+  };
   window.updateBreadcrumb = updateBreadcrumb;
 
   /* --------- Popup Login --------- */
@@ -186,9 +179,8 @@ function initNavEvents() {
   });
 
   /* --------- Login Status Check + Tablet/Mobile nav setup --------- */
-  function checkLoginStatus() {
+  const checkLoginStatus = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-
     const navContainer = sharedNav.querySelector("#nav-container");
     const accountSummary = sharedNav.querySelector("#account-summary");
     const logoIndex = sharedNav.querySelector("#logo-index");
@@ -217,16 +209,15 @@ function initNavEvents() {
 
     if (mobileNavIcon) {
       const screenWidth = window.innerWidth;
-      if (isLoggedIn && screenWidth >= 768)
-        mobileNavIcon.style.display = "none";
-      else mobileNavIcon.style.display = "";
+      mobileNavIcon.style.display =
+        isLoggedIn && screenWidth >= 768 ? "none" : "";
       mobileNavIcon.style.width = "auto";
     }
 
     const tabletLis = sharedNav.querySelectorAll(".tablet-nav-el ul li");
     const mobLis = mobNavContainer?.querySelectorAll("ul li") || [];
 
-    function clearAllActive() {
+    const clearAllActive = () => {
       tabletLis.forEach((li) => {
         li.classList.remove("active", "tablet-active");
         li.style.color = "";
@@ -237,18 +228,16 @@ function initNavEvents() {
         li.style.color = "";
         li.textContent = li.textContent.replace(/^- /, "");
       });
-    }
+    };
 
-    function activateNav(pageName) {
+    const activateNav = (pageName) => {
       clearAllActive();
-
       tabletLis.forEach((li) => {
         if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active", "tablet-active");
           li.style.color = "red";
         }
       });
-
       mobLis.forEach((li) => {
         if (li.textContent.trim().includes(pageName)) {
           li.classList.add("active");
@@ -258,107 +247,116 @@ function initNavEvents() {
           });
         }
       });
-
       updateBreadcrumb(pageName);
-    }
+    };
 
-    function handleClick(li, pageName) {
+    const handleClick = (li, pageName) => {
       localStorage.setItem("activePage", pageName);
       activateNav(pageName);
+      const navMap = {
+        الرئيسية: "index.html",
+        "من نحن": "about.html",
+        المنتجات: "products.html",
+        العروض: "offer.html",
+        "تواصل معنا": "contact.html",
+        "متجر البيانات": "database.html",
+        "سلة المشتريات": "cartView.html",
+        "إتمام الطلب": "order.html",
+      };
+      if (navMap[pageName]) window.location.href = navMap[pageName];
+    };
 
-      if (pageName.includes("الرئيسية")) window.location.href = "index.html";
-      if (pageName.includes("من نحن")) window.location.href = "about.html";
-      if (pageName.includes("المنتجات")) window.location.href = "products.html";
-      if (pageName.includes("العروض")) window.location.href = "offer.html";
-      if (pageName.includes("تواصل معنا"))
-        window.location.href = "contact.html";
-      if (pageName.includes("متجر البيانات"))
-        window.location.href = "database.html";
-      if (pageName.includes("سلة المشتريات"))
-        window.location.href = "cartView.html";
-      if (pageName.includes("إتمام الطلب")) window.location.href = "order.html";
-    }
-
-    tabletLis.forEach((li) => {
+    tabletLis.forEach((li) =>
+      li.addEventListener("click", () =>
+        handleClick(li, li.textContent.trim().replace(/^- /, ""))
+      )
+    );
+    mobLis.forEach((li) =>
       li.addEventListener("click", () => {
-        const pageName = li.textContent.trim().replace(/^- /, "");
-        handleClick(li, pageName);
-      });
-    });
-
-    mobLis.forEach((li) => {
-      li.addEventListener("click", () => {
-        const pageName = li.textContent.trim().replace(/^- /, "");
-        handleClick(li, pageName);
+        handleClick(li, li.textContent.trim().replace(/^- /, ""));
         hideMobileNav();
-      });
-    });
+      })
+    );
 
     const savedPage = localStorage.getItem("activePage") || "الرئيسية";
     activateNav(savedPage);
-  }
+  };
 
   checkLoginStatus();
   window.addEventListener("resize", checkLoginStatus);
-
   updateNavByLoginStatus();
+
+  /* --------- Account Summary Toggle + Profile Logic --------- */
+  const userImg = sharedNav.querySelector('img.hover[alt="userImg"]');
+  const accountSummarySubNav = sharedNav.querySelector(
+    ".account-summary-sub-nav"
+  );
+  const allowedProfileOps = ["profile-op", "edit-info", "change-password"];
+
+  if (userImg && accountSummarySubNav) {
+    userImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+      accountSummarySubNav.classList.toggle("subNavActive");
+    });
+
+    document.addEventListener("click", () =>
+      accountSummarySubNav.classList.remove("subNavActive")
+    );
+
+    accountSummarySubNav.addEventListener("click", (e) => {
+      const li = e.target.closest("li");
+      if (!li) return;
+      const matchedOp = Array.from(li.classList).find((cls) =>
+        allowedProfileOps.includes(cls)
+      );
+      if (matchedOp) {
+        localStorage.setItem("pendingProfileOp", matchedOp);
+        window.location.href = "profile.html";
+      }
+      e.stopPropagation();
+    });
+  }
 }
 
 /* ========== Load nav.html dynamically and init nav ========== */
 document.addEventListener("DOMContentLoaded", () => {
   const navPlaceholder = document.getElementById("shared-nav");
+  if (!navPlaceholder) return;
 
-  if (navPlaceholder) {
-    fetch("../../components/nav.html")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load nav.html");
-        return res.text();
-      })
-      .then((html) => {
-        navPlaceholder.innerHTML = html;
-        try {
-          initNavEvents();
-        } catch (err) {
-          console.error("initNavEvents error:", err);
-        }
+  fetch("../../components/nav.html")
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to load nav.html");
+      return res.text();
+    })
+    .then((html) => {
+      navPlaceholder.innerHTML = html;
+      try {
+        initNavEvents();
+      } catch (err) {
+        console.error("initNavEvents error:", err);
+      }
 
-        // Add click listener for #order button on cartView.html
-        const orderPageBtn = document.getElementById("order");
-        if (orderPageBtn) {
-          orderPageBtn.addEventListener("click", () => {
-            window.location.href = "order.html";
-          });
-        }
+      const orderPageBtn = document.getElementById("order");
+      if (orderPageBtn)
+        orderPageBtn.addEventListener(
+          "click",
+          () => (window.location.href = "order.html")
+        );
 
-        // Navigate to profile.html when clicking images in cart-holder
-        const cartHolderImages = document.querySelectorAll(".cart-holder img");
-        if (cartHolderImages.length) {
-          cartHolderImages.forEach((img) => {
-            img.addEventListener("click", () => {
-              window.location.href = "profile.html";
-            });
-          });
-        }
-
-        const currentPage = window.location.pathname.split("/").pop();
-        const map = {
-          "index.html": "الرئيسية",
-          "products.html": "المنتجات",
-          "about.html": "من نحن",
-          "contact.html": "تواصل معنا",
-          "offer.html": "العروض",
-          "database.html": "متجر البيانات",
-          "cartView.html": "سلة المشتريات",
-          "order.html": "إتمام الطلب",
-        };
-        if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
-          window.updateBreadcrumb(map[currentPage]);
-        }
-      })
-      .catch((err) => {
-        console.error("Error loading nav:", err);
-      });
-  } else {
-    console.debug("No #shared-nav placeholder found");
-  }
+      const currentPage = window.location.pathname.split("/").pop();
+      const map = {
+        "index.html": "الرئيسية",
+        "products.html": "المنتجات",
+        "about.html": "من نحن",
+        "contact.html": "تواصل معنا",
+        "offer.html": "العروض",
+        "database.html": "متجر البيانات",
+        "cartView.html": "سلة المشتريات",
+        "order.html": "إتمام الطلب",
+      };
+      if (map[currentPage] && typeof window.updateBreadcrumb === "function") {
+        window.updateBreadcrumb(map[currentPage]);
+      }
+    })
+    .catch((err) => console.error("Error loading nav:", err));
 });

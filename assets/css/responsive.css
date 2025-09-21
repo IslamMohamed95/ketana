@@ -132,7 +132,9 @@
   #nav-container img {
     width: 30%;
   }
-
+  #nav-container .account-summary-sub-nav {
+    display: none;
+  }
   #shared-nav .tablet-nav-el {
     display: none;
   }
@@ -3605,13 +3607,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 7px;
-    padding: 12px;
+    padding: 5px 10px;
     background-color: rgba(245, 245, 245, 1);
     border: 1px solid rgba(237, 237, 237, 1);
     border-radius: 10px;
   }
   #profile-section .profile-sett .preferred-lang > div:last-child hr {
-    height: 100%;
+    height: 15px;
     border: none;
     width: 1px;
     background-color: rgba(218, 218, 218, 1);
@@ -3640,37 +3642,59 @@
     color: rgba(140, 140, 140, 1);
   }
 
+  /* Table wrapper */
   #profile-section .manage-dealer .table-wrapper {
+    direction: ltr;
     width: 100%;
-    overflow-x: auto;
-    overflow-y: visible; /* enables scroll on small screens */
-  }
-  #profile-section .manage-dealer table {
-    overflow: visible;
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    overflow-x: auto !important; /* horizontal scroll */
+    overflow-y: visible !important;
+    display: flex;
+    flex-direction: column;
   }
 
-  #profile-section .manage-dealer th,
-  #profile-section .manage-dealer td {
+  /* Table header */
+  #profile-section .manage-dealer .table-header .table-row {
+    display: flex;
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    color: #666;
+    min-width: 720px; /* ensure scroll works on small screens */
+  }
+
+  #profile-section .manage-dealer .table-header .table-cell {
+    flex: 1;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 12px;
+    box-sizing: border-box;
+  }
+
+  /* Table body */
+  #profile-section .manage-dealer .table-body .table-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    position: relative; /* for dropdown positioning */
+    background: #fff;
+    min-width: 720px; /* match header width */
+    overflow: visible; /* prevent dropdown clipping */
+  }
+
+  #profile-section .manage-dealer .table-body .table-cell {
+    flex: 1;
     padding: 14px 16px;
     text-align: center;
     font-size: 12px;
     font-weight: lighter;
     color: rgba(130, 130, 130, 1);
-    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
   }
 
-  #profile-section .manage-dealer th {
-    background: #fafafa;
-    font-weight: 600;
-    color: #666;
-  }
-
-  #profile-section .manage-dealer tr:last-child td {
+  #profile-section
+    .manage-dealer
+    .table-body
+    .table-row:last-child
+    .table-cell {
     border-bottom: none;
   }
 
@@ -3683,6 +3707,7 @@
     font-weight: 500;
     display: inline-block;
   }
+
   #profile-section .manage-dealer .status-inactive {
     background: #fdecec;
     color: #dc3545;
@@ -3694,9 +3719,11 @@
 
   /* Dropdown menu */
   #profile-section .manage-dealer .options {
-    position: relative;
+    overflow: visible;
+    position: relative; /* needed for absolute dropdown */
     display: inline-block;
   }
+
   #profile-section .manage-dealer .options button {
     background: none;
     border: none;
@@ -3704,23 +3731,29 @@
     cursor: pointer;
     color: #666;
   }
+
   #profile-section .manage-dealer .options .dropdown {
-    position: fixed; /* escape td clipping */
+    position: fixed; /* absolute dropdown for div layout */
     top: auto;
-    left: auto;
+    left: auto; /* align to button */
     min-width: 160px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
+
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: none;
-    z-index: 9999;
+    z-index: 999; /* ensure above everything */
+  }
+
+  .dropdown.open {
+    display: block !important;
   }
 
   #profile-section .manage-dealer .options .dropdown li {
     list-style: none;
     padding: 10px 14px;
-    font-size: 12px;
+    font-size: 11px;
     cursor: pointer;
     color: #333;
     display: flex;
@@ -3728,15 +3761,13 @@
     gap: 8px;
     transition: background 0.2s;
   }
+
   #profile-section .manage-dealer .options .dropdown li:hover {
     background: #f5f5f5;
   }
+
   #profile-section .manage-dealer .options .dropdown li.delete {
     color: #dc3545;
-  }
-
-  #profile-section .manage-dealer .options.open .dropdown {
-    display: block;
   }
 
   /*------- Footer Section Styles -------*/
@@ -3931,7 +3962,7 @@
   }
   /*------------ Nav Styles ---------*/
 
-  #nav-container > img {
+  #nav-container #tablet-login-img-view {
     width: 25%;
   }
   /*-------- Mobile Nav Styles --------*/
@@ -3971,8 +4002,8 @@
   }
   /*---------- Nav Styles ----------*/
 
-  #nav-container > img {
-    width: 22%;
+  #nav-container #tablet-login-img-view {
+    width: 13%;
   }
 }
 
@@ -4209,9 +4240,73 @@
   #nav-container > div {
     width: 170px;
   }
-  #shared-nav #nav-container img {
-    width: 9%;
+  #nav-container #account-summary {
+    position: relative;
   }
+  #nav-container .account-summary-sub-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 12px;
+    position: absolute;
+    top: 140%;
+    align-items: center;
+    z-index: 20;
+    /* smooth dropdown effect */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  #nav-container .account-summary-sub-nav.subNavActive {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  #nav-container .account-summary-sub-nav ul {
+    padding: 10px;
+    width: 90%;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 0;
+
+    text-align: center;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(221, 221, 221, 1);
+    border-radius: 10px;
+  }
+  #nav-container .account-summary-sub-nav li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+    font-size: 11px;
+    transition: all 0.2s ease-in-out;
+  }
+  #nav-container .account-summary-sub-nav li:hover {
+    transform: scale(0.95);
+  }
+  #nav-container .account-summary-sub-nav li > i {
+    color: rgba(140, 140, 140, 1);
+    font-size: 14px;
+  }
+  #nav-container .account-summary-sub-nav li:last-child {
+    color: red;
+  }
+  #nav-container .account-summary-sub-nav ul hr {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: #ececec;
+  }
+
   #cart-view-container .view-main-container {
     flex-direction: row;
     justify-content: space-between;
@@ -4677,7 +4772,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    justify-content: space-between;
+    gap: 0;
+    justify-content: center;
     padding: 0;
     flex-direction: row;
     z-index: 5;
@@ -4685,8 +4781,8 @@
   }
   #order-section .order-content .second-part {
     justify-content: flex-start;
-    padding: 40px 10px;
-    width: 50%;
+    padding: 40px 20px;
+    width: 60%;
     overflow-y: scroll;
   }
   #order-section .payment-item {
@@ -4694,9 +4790,8 @@
   }
   #order-section .order-content > .first-part {
     padding: 40px 20px;
-
     height: 100%;
-    width: 35%;
+    width: 40%;
     background-color: rgba(245, 245, 245, 1);
   }
   #order-section .order-product .middle-part {
@@ -4785,6 +4880,7 @@
     justify-self: center;
     flex-direction: column;
     z-index: 10;
+
     /* Transition effect */
     opacity: 0;
     transform: scale(0.5);
@@ -4885,6 +4981,9 @@
 
   #profile-section .manage-dealer .dealer-intro button {
     width: fit-content;
+  }
+  #profile-section .manage-dealer #pagination-section {
+    justify-content: flex-end;
   }
   /*--------- Footer Section Styles -------*/
   #footer-section {
@@ -5452,7 +5551,7 @@
     width: 10%;
   }
   #order-section .order-content .second-part {
-    width: 50%;
+    width: 70%;
   }
   /*--------- Profile --------*/
   #profile-section .profile-content {
